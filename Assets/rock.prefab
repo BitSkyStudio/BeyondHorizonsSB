@@ -27,7 +27,8 @@
       {
         "__type": "PickupableObject",
         "__guid": "97d07493-94d9-4dc2-9b0b-c114ca2aab24",
-        "ItemId": "rock"
+        "ItemId": "rock",
+        "Time": 1
       }
     ],
     "Children": [],

@@ -64,6 +64,14 @@
         "MaxHealth": 100,
         "RunSpeed": 250,
         "WalkSpeed": 120
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "bbf2bd0f-a38d-44bd-83c5-cc4359566133",
+        "Center": "0,0,32.09004",
+        "IsTrigger": false,
+        "Scale": "32.0002,32.0001,63.19988",
+        "Static": false
       }
     ],
     "Children": [],

@@ -9,11 +9,13 @@ namespace Sandbox
 
 	public class Item
 	{
+		public string Id { get; set; }
 		public string DisplayName {  get; set; }
 		public int StackSize { get; set;}
-		public PrefabFile Prefab { get; set; }
+		public GameObject Prefab { get; set; }
 		public Item()
 		{
+			Id = "";
 			DisplayName = "unknown";
 			StackSize = 0;
 			Prefab = null;
@@ -34,16 +36,16 @@ namespace Sandbox
 	}
 	public class Inventory
 	{
-		public ItemStack[] items;
+		public ItemStack[] Items;
 		public Inventory( int size )
 		{
-			items = new ItemStack[size];
+			Items = new ItemStack[size];
 		}
 		public void addItem( ItemStack item )
 		{
-			for ( int i = 0; i < items.Length; i++ ) {
-				if ( items[i] == null ) {
-					items[i] = item;
+			for ( int i = 0; i < Items.Length; i++ ) {
+				if ( Items[i] == null ) {
+					Items[i] = item;
 					return;
 				}
 			}		

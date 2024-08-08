@@ -88,7 +88,6 @@
       "__guid": "b0d4c011-60be-48f0-aafb-a3f4930e93e0",
       "Flags": 0,
       "Name": "MultiplayerController",
-      "Position": "-81.65952,-72.46007,34.46971",
       "Enabled": true,
       "Components": [
         {
@@ -149,7 +148,7 @@
       "__guid": "69d82297-450a-44a0-acb9-9afb67a01467",
       "Flags": 0,
       "Name": "stone",
-      "Position": "255.021,186.7784,0.01834822",
+      "Position": "255.021,186.7784,-2.824105",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
@@ -206,12 +205,22 @@
           "__guid": "be90b18b-7d94-460f-97ec-38b505e458b0",
           "Items": {
             "rock": {
+              "Id": "rock",
               "DisplayName": "Rock",
-              "StackSize": 20
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "rock.prefab"
+              }
             },
             "stick": {
+              "Id": "stick",
               "DisplayName": "Stick",
-              "StackSize": 20
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "stick.prefab"
+              }
             }
           }
         }
@@ -233,7 +242,7 @@
       "EditorAutoUpdate": true,
       "AgentHeight": 64,
       "AgentRadius": 16,
-      "AgentStepSize": 18,
+      "AgentStepSize": 21,
       "AgentMaxSlope": 40,
       "ExcludedBodies": "",
       "IncludedBodies": ""

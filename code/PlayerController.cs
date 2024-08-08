@@ -58,10 +58,14 @@ public sealed class PlayerController : Component
 	public Inventory PlayerInventory = new Inventory(10);
 
 	public int SelectedSlot = 0;
-	public int Slots => PlayerInventory.items.Length;
+	public int Slots => PlayerInventory.Items.Length;
 
 	public float PickupProgress = 0f;
 	public PickupableObject PickingUpObject = null;
+
+	public GameObject placingObject;
+	public string placingObjectId;
+
 
 
 	protected override void OnUpdate()
@@ -93,21 +97,31 @@ public sealed class PlayerController : Component
 		{
 			SelectedSlot += 1;
 		}
-		for ( int i = 0; i < Slots; i++ )
+		for ( int i = 1; i < Slots; i++ )
 		{
 			if ( Input.Pressed( "Slot" + i ) )
 			{
-				SelectedSlot = i;
+				SelectedSlot = i-1;
 			}
 		}
+		if ( Input.Pressed( "Slot0" ) )
+		{
+			SelectedSlot = Slots-1;
+		}
 		SelectedSlot = ((SelectedSlot % Slots) + Slots) % Slots;
-		var cameraTrace = Scene.Trace.Ray( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * InteractionDistance ).Size( 5f ).IgnoreGameObjectHierarchy( GameObject ).Run();
+		var cameraTraceSetup = Scene.Trace.Ray( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * InteractionDistance ).Size( 5f ).IgnoreGameObjectHierarchy( GameObject );
+		if(placingObject != null )
+		{
+			cameraTraceSetup = cameraTraceSetup.IgnoreGameObjectHierarchy( placingObject );
+		}
+		var cameraTrace = cameraTraceSetup.Run();
 		bool keepPickupProgress = false;
+		bool keepPlacing = false;
 		if ( cameraTrace.Hit )
 		{
-			if ( Input.Down( "attack1" ) )
+			PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
+			if ( Input.Down( "attack2" ) )
 			{
-				PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
 				if ( pickupableObject != null )
 				{
 					if ( pickupableObject == PickingUpObject )
@@ -128,6 +142,42 @@ public sealed class PlayerController : Component
 					}
 				}
 			}
+			if ( cameraTrace.GameObject.Components.Get<Terrain>() != null)
+			{
+				ItemStack stack = PlayerInventory.Items[SelectedSlot];
+				if ( stack != null )
+				{
+					if ( !stack.ItemType.Id.Equals(placingObjectId))
+					{
+						placingObjectId = stack.ItemType.Id;
+						if ( placingObject != null )
+							placingObject.Destroy();
+						placingObject = stack.ItemType.Prefab.Clone( cameraTrace.EndPosition, Rotation.FromYaw(EyeAngles.yaw) );
+						placingObject.BreakFromPrefab();
+						placingObject.Components.Get<BoxCollider>().IsTrigger = true;
+					} else
+					{
+						placingObject.Transform.Position = cameraTrace.EndPosition;
+						placingObject.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+						bool blocked = placingObject.Components.Get<BoxCollider>().Touching.Count() > 0;
+						placingObject.Components.Get<ModelRenderer>().Tint = blocked?Color.Red:Color.Green;
+						if ( Input.Pressed( "attack1" ) && !blocked )
+						{
+							var realObject = stack.ItemType.Prefab.Clone( cameraTrace.EndPosition, Rotation.FromYaw( EyeAngles.yaw ) );
+							realObject.NetworkSpawn(Connection.Host);
+						}
+					}
+
+					keepPlacing = true;
+				}
+			}
+		}
+		if ( !keepPlacing )
+		{
+			if ( placingObject != null )
+				placingObject.Destroy();
+			placingObject = null;
+			placingObjectId = null;
 		}
 		if ( !keepPickupProgress )
 		{
@@ -136,7 +186,6 @@ public sealed class PlayerController : Component
 		}
 		
 	}
-
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
