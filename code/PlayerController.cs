@@ -120,7 +120,7 @@ public sealed class PlayerController : Component
 		if ( cameraTrace.Hit )
 		{
 			PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
-			if ( Input.Down( "attack2" ) )
+			if ( Input.Pressed( "attack2" ) || (Input.Down("attack2") && PickingUpObject != null) )
 			{
 				if ( pickupableObject != null )
 				{
