@@ -1,0 +1,56 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "hatchet",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "1.400001,-1.2,1.6",
+        "IsTrigger": false,
+        "Scale": "28.20007,10.00004,2.400017",
+        "Static": false
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "hatchet",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "368612e8-b40e-4277-be7b-b9376e14a2b1",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "-14.00876,-3.660939,1.643029",
+        "Rotation": "0.5,0.5,0.5,0.5",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "2aaee19b-ec79-4620-bb43-eac3bdb462e0",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/polyhaven/hatchet/hatchet_1k.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "titanovsky.hatchet_1k"
+  ],
+  "__version": 1
+}

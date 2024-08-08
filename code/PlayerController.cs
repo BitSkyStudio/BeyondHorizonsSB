@@ -137,14 +137,14 @@ public sealed class PlayerController : Component
 					{
 						cameraTrace.GameObject.Network.TakeOwnership();
 						cameraTrace.GameObject.Destroy();
-						PlayerInventory.addItem( ItemStack.Create( pickupableObject.ItemId ) );
+						PlayerInventory.AddItem( ItemStack.Create( pickupableObject.ItemId, 1 ) );
 						keepPickupProgress = false;
 					}
 				}
 			}
 			if ( cameraTrace.GameObject.Components.Get<Terrain>() != null)
 			{
-				ItemStack stack = PlayerInventory.Items[SelectedSlot];
+				ItemStack stack = PlayerInventory.GetAt(SelectedSlot);
 				if ( stack != null )
 				{
 					if ( !stack.ItemType.Id.Equals(placingObjectId))
@@ -160,11 +160,13 @@ public sealed class PlayerController : Component
 						placingObject.Transform.Position = cameraTrace.EndPosition;
 						placingObject.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 						bool blocked = placingObject.Components.Get<BoxCollider>().Touching.Count() > 0;
-						placingObject.Components.Get<ModelRenderer>().Tint = blocked?Color.Red:Color.Green;
-						if ( Input.Pressed( "attack1" ) && !blocked )
+						placingObject.Components.GetAll<ModelRenderer>().First().Tint = blocked?Color.Red:Color.Green;
+						if ( Input.Pressed( "attack2" ) && !blocked )
 						{
 							var realObject = stack.ItemType.Prefab.Clone( cameraTrace.EndPosition, Rotation.FromYaw( EyeAngles.yaw ) );
 							realObject.NetworkSpawn(Connection.Host);
+							stack.Count -= 1;
+							PlayerInventory.SetAt( SelectedSlot, stack );
 						}
 					}
 

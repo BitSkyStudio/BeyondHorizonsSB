@@ -1,0 +1,30 @@
+InventoryUI {
+
+
+	.title {
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.craftmenu {
+		pointer-events: all;
+		position: absolute;
+		top: 20%;
+		bottom: 20%;
+		left: 40%;
+		right: 40%;
+		background-color: lightgray;
+		border-radius: 8px;
+		padding: 8px;
+	}
+
+	.craftslot {
+		margin: 8px;
+		width: 96px;
+		height: 96px;
+		background-color: gray;
+		border-width: 8px;
+		border-radius: 8px;
+	}
+}

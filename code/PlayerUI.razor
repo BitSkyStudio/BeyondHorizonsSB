@@ -17,11 +17,14 @@
 		{
 			<div class="slot @(player.SelectedSlot==i?"active":"")">
 				@{
-					var item = player.PlayerInventory.Items[i];
+					var item = player.PlayerInventory.GetAt(i);
 					if (item != null)
 					{
 						<p>
-							@item.ItemType.DisplayName
+							@(item.ItemType.DisplayName)
+						</p>
+						<p class="hotbarcounter">
+							@(item.Count)
 						</p>
 					}
 				}
@@ -34,7 +37,6 @@
 {
 
 	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
-
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>

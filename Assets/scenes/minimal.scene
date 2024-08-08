@@ -81,6 +81,11 @@
         {
           "__type": "CameraComponentAssigner",
           "__guid": "2e5dc197-6543-4b6d-960b-aac7ebd28a05"
+        },
+        {
+          "__type": "Sandbox.AudioListener",
+          "__guid": "aa07c1a9-3344-4be1-a2f9-204edd54c39e",
+          "UseCameraDirection": true
         }
       ]
     },
@@ -174,6 +179,28 @@
           "__type": "PlayerUI",
           "__guid": "28a413d8-1bad-4657-add6-e611d6e3cb6a"
         }
+      ],
+      "Children": [
+        {
+          "__guid": "b20055d9-f02b-41bf-bd90-5dc3f783e18f",
+          "Flags": 0,
+          "Name": "InventoryScreen",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "5432dbd6-614e-40a6-a42c-67d6aa1333c2",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 50
+            },
+            {
+              "__type": "InventoryUI",
+              "__guid": "0c4445c7-778a-4655-83c5-ee9fe5d8f47d"
+            }
+          ]
+        }
       ]
     },
     {
@@ -221,6 +248,48 @@
                 "_type": "gameobject",
                 "prefab": "stick.prefab"
               }
+            },
+            "hatchet": {
+              "Id": "hatchet",
+              "DisplayName": "Hatchet",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "hatchet.prefab"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "b7d450ac-2706-4e68-9766-e3cf508d2e63",
+      "Flags": 0,
+      "Name": "RecipeRegistry",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "RecipeRegistry",
+          "__guid": "68980c1d-1d2f-45af-8820-e9dd7acf1c18",
+          "recipes": {
+            "hatchet": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "stick",
+                  "Count": 1
+                },
+                {
+                  "Id": "rock",
+                  "Count": 1
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "hatchet",
+                  "Count": 1
+                }
+              ]
             }
           }
         }
