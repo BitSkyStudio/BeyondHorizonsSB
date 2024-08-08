@@ -1,0 +1,42 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if(player.PickupProgress > 0)
+	{
+		<div class="pickupbar">
+			<div class="innerpickupbar" style="width: @(player.PickupProgress/player.PickingUpObject.Time*100)%"></div>
+		</div>
+	}
+	<div class="healthbar">
+		<div class="innerhealthbar" style="width: @(player.Health/player.MaxHealth*100)%"></div>
+	</div>
+	<div class="hotbar">
+		@for (int i = 0; i < player.Slots; i++)
+		{
+			<div class="slot @(player.SelectedSlot==i?"active":"")">
+				@{
+					var item = player.PlayerInventory.items[i];
+					if (item != null)
+					{
+						<p>
+							@item.ItemType.DisplayName
+						</p>
+					}
+				}
+			</div>
+		}
+	</div>
+</root>
+
+@code
+{
+
+	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
+}

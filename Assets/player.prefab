@@ -39,7 +39,7 @@
         "Height": 64,
         "IgnoreLayers": "",
         "Radius": 16,
-        "StepHeight": 18,
+        "StepHeight": 21.02,
         "UseCollisionRules": false
       },
       {
@@ -57,8 +57,11 @@
           "go": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
           "component_type": "CharacterController"
         },
-        "EyeHeight": 55,
+        "EyeHeight": 60,
+        "Health": 75,
+        "InteractionDistance": 200,
         "JumpStrength": 400,
+        "MaxHealth": 100,
         "RunSpeed": 250,
         "WalkSpeed": 120
       }

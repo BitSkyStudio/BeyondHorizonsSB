@@ -3,8 +3,6 @@ using Sandbox.Citizen;
 
 public sealed class PlayerController : Component
 {
-	[Property]
-	[Category( "Components" )]
 	public GameObject Camera { get; set; }
 
 	[Property]
@@ -44,7 +42,26 @@ public sealed class PlayerController : Component
 	[Range( 0f, 1000f, 10f )]
 	public float EyeHeight { get; set; } = 55f;
 
+	[Property]
+	public float MaxHealth { get; set; } = 100f;
+
+	[Property]
+	public float Health { get; set; } = 75f;
+
+	[Property]
+	public float InteractionDistance { get; set; } = 200f;
+
 	public Angles EyeAngles { get; set; }
+
+	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( Vector3.Up * EyeHeight );
+
+	public Inventory PlayerInventory = new Inventory(10);
+
+	public int SelectedSlot = 0;
+	public int Slots => PlayerInventory.items.Length;
+
+	public float PickupProgress = 0f;
+	public PickupableObject PickingUpObject = null;
 
 
 	protected override void OnUpdate()
@@ -65,8 +82,59 @@ public sealed class PlayerController : Component
 		if ( Camera != null )
 		{
 			Camera.Transform.LocalRotation = Rotation.From( EyeAngles );
-			Camera.Transform.LocalPosition = Transform.Position + Vector3.Up * EyeHeight;
+			Camera.Transform.LocalPosition = EyeWorldPosition;
 		}
+
+		if ( Input.Pressed( "SlotPrev" ) )
+		{
+			SelectedSlot -= 1;
+		}
+		if ( Input.Pressed( "SlotNext" ) )
+		{
+			SelectedSlot += 1;
+		}
+		for ( int i = 0; i < Slots; i++ )
+		{
+			if ( Input.Pressed( "Slot" + i ) )
+			{
+				SelectedSlot = i;
+			}
+		}
+		SelectedSlot = ((SelectedSlot % Slots) + Slots) % Slots;
+		var cameraTrace = Scene.Trace.Ray( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * InteractionDistance ).Size( 5f ).IgnoreGameObjectHierarchy( GameObject ).Run();
+		bool keepPickupProgress = false;
+		if ( cameraTrace.Hit )
+		{
+			if ( Input.Down( "attack1" ) )
+			{
+				PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
+				if ( pickupableObject != null )
+				{
+					if ( pickupableObject == PickingUpObject )
+					{
+						PickupProgress += Time.Delta;
+					} else
+					{
+						PickupProgress = 0;
+						PickingUpObject = pickupableObject;
+					}
+					keepPickupProgress = true;
+					if ( PickupProgress >= pickupableObject.Time )
+					{
+						cameraTrace.GameObject.Network.TakeOwnership();
+						cameraTrace.GameObject.Destroy();
+						PlayerInventory.addItem( ItemStack.Create( pickupableObject.ItemId ) );
+						keepPickupProgress = false;
+					}
+				}
+			}
+		}
+		if ( !keepPickupProgress )
+		{
+			PickupProgress = 0;
+			PickingUpObject = null;
+		}
+		
 	}
 
 	protected override void OnFixedUpdate()

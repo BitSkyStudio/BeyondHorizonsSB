@@ -1,0 +1,44 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "stick",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "b54045ba-4e82-4dc2-a190-9f7f42e92bda",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/dry_branches_medium_01c.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "0,0,0.9000001",
+        "IsTrigger": false,
+        "Scale": "29.00005,5.400035,5.800022",
+        "Static": false
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "stick"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "polyhaven.dry_branches_medium_01c"
+  ],
+  "__version": 1
+}
