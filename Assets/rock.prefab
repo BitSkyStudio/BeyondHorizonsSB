@@ -31,7 +31,15 @@
         "Time": 1
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "d495ab4c-c135-4915-8d93-bd8fb5d657bf",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-15.7423,32.08644,19.02249",
+        "Enabled": true
+      }
+    ],
     "__variables": []
   },
   "ShowInMenu": false,

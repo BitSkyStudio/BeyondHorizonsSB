@@ -41,6 +41,13 @@
             "Tint": "1,1,1,1"
           }
         ]
+      },
+      {
+        "__guid": "43344940-6f84-4231-bbec-141ba8a61d92",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "1.36828,4.887532,27.64903",
+        "Enabled": true
       }
     ],
     "__variables": []

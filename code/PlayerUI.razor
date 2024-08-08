@@ -20,12 +20,13 @@
 					var item = player.PlayerInventory.GetAt(i);
 					if (item != null)
 					{
-						<p>
+						/*<p>
 							@(item.ItemType.DisplayName)
 						</p>
 						<p class="hotbarcounter">
 							@(item.Count)
-						</p>
+						</p>*/
+						<ItemRenderPanel ItemId=@item.ItemType.Id></ItemRenderPanel>
 					}
 				}
 			</div>

@@ -27,10 +27,19 @@
       {
         "__type": "PickupableObject",
         "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
-        "ItemId": "stick"
+        "ItemId": "stick",
+        "Time": 1
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "0,-19.60745,0",
+        "Enabled": true
+      }
+    ],
     "__variables": []
   },
   "ShowInMenu": false,
