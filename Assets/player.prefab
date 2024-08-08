@@ -1,0 +1,75 @@
+{
+  "RootObject": {
+    "__guid": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
+    "Flags": 0,
+    "Name": "player",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "171b3c1a-a67a-4b4d-845b-ec432b9ba9d7",
+        "BodyGroups": 341,
+        "CreateBoneObjects": false,
+        "Model": "models/citizen/citizen.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "df5d4acc-e721-4251-b170-4d0145cd8906",
+        "BodyWeight": 1,
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "171b3c1a-a67a-4b4d-845b-ec432b9ba9d7",
+          "go": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.CharacterController",
+        "__guid": "423bca37-1bde-45fd-ae8c-5f3725d00379",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
+      },
+      {
+        "__type": "PlayerController",
+        "__guid": "439680fe-99bb-41c5-a111-53b29b62b582",
+        "Animator": {
+          "_type": "component",
+          "component_id": "df5d4acc-e721-4251-b170-4d0145cd8906",
+          "go": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "Controller": {
+          "_type": "component",
+          "component_id": "423bca37-1bde-45fd-ae8c-5f3725d00379",
+          "go": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
+          "component_type": "CharacterController"
+        },
+        "EyeHeight": 55,
+        "JumpStrength": 400,
+        "RunSpeed": 250,
+        "WalkSpeed": 120
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
