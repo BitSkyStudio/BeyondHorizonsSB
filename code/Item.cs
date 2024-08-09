@@ -13,12 +13,18 @@ namespace Sandbox
 		public string DisplayName {  get; set; }
 		public int StackSize { get; set;}
 		public GameObject Prefab { get; set; }
+		public ToolType ToolType { get; set; }
+		public float UseTime { get; set; }
+		public float Damage { get; set; }
 		public Item()
 		{
 			Id = "";
 			DisplayName = "unknown";
 			StackSize = 0;
 			Prefab = null;
+			ToolType = ToolType.None;
+			UseTime = 1;
+			Damage = 10;
 		}
 	}
 	public class ItemStack
@@ -79,5 +85,13 @@ namespace Sandbox
 		{
 			return ItemStack.Create( Id, Count );
 		}
+	}
+	public enum ToolType
+	{
+		None,
+		Axe,
+		Pickaxe,
+		Knife,
+		Shovel
 	}
 }

@@ -10,7 +10,7 @@
 		</div>
 	}
 	<div class="healthbar">
-		<div class="innerhealthbar" style="width: @(player.Health/player.MaxHealth*100)%"></div>
+		<div class="innerhealthbar" style="width: @(player.Health.Health/player.Health.MaxHealth*100)%"></div>
 	</div>
 	<div class="hotbar">
 		@for (int i = 0; i < player.Slots; i++)
@@ -20,12 +20,9 @@
 					var item = player.PlayerInventory.GetAt(i);
 					if (item != null)
 					{
-						/*<p>
-							@(item.ItemType.DisplayName)
-						</p>
 						<p class="hotbarcounter">
 							@(item.Count)
-						</p>*/
+						</p>
 						<ItemRenderPanel ItemId=@item.ItemType.Id></ItemRenderPanel>
 					}
 				}

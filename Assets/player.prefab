@@ -58,10 +58,8 @@
           "component_type": "CharacterController"
         },
         "EyeHeight": 60,
-        "Health": 75,
         "InteractionDistance": 200,
         "JumpStrength": 400,
-        "MaxHealth": 100,
         "RunSpeed": 250,
         "WalkSpeed": 120
       },
@@ -77,6 +75,25 @@
         "__type": "InventoryComponent",
         "__guid": "1c56f94e-16a0-4b8e-b0b6-4cf40b770795",
         "Size": 10
+      },
+      {
+        "__type": "HealthComponent",
+        "__guid": "c45be642-c35c-4cd4-821b-a74b2c40609e",
+        "Health": 75,
+        "Lives": 1,
+        "LootItem": {
+          "Id": "",
+          "Count": 1
+        },
+        "MaxHealth": 100,
+        "Regeneration": 1,
+        "ToolDamageModifiers": {
+          "None": 1,
+          "Axe": 1,
+          "Pickaxe": 1,
+          "Knife": 1,
+          "Shovel": 0.5
+        }
       }
     ],
     "Children": [],

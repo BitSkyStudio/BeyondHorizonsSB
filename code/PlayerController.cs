@@ -43,12 +43,6 @@ public sealed class PlayerController : Component
 	public float EyeHeight { get; set; } = 55f;
 
 	[Property]
-	public float MaxHealth { get; set; } = 100f;
-
-	[Property]
-	public float Health { get; set; } = 75f;
-
-	[Property]
 	public float InteractionDistance { get; set; } = 200f;
 
 	public Angles EyeAngles { get; set; }
@@ -59,13 +53,15 @@ public sealed class PlayerController : Component
 	public int Slots => PlayerInventory.Size;
 	public InventoryComponent PlayerInventory => Components.Get<InventoryComponent>();
 
+	public HealthComponent Health => Components.Get<HealthComponent>();
+
 	public float PickupProgress = 0f;
 	public PickupableObject PickingUpObject = null;
 
 	public GameObject placingObject;
 	public string placingObjectId;
 
-
+	private float AttackCooldown = 0;
 
 	protected override void OnUpdate()
 	{
@@ -170,6 +166,36 @@ public sealed class PlayerController : Component
 					}
 
 					keepPlacing = true;
+				}
+			}
+		}
+		AttackCooldown -= Time.Delta;
+		if(AttackCooldown < 0 )
+		{
+			AttackCooldown = 0;
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		}
+		if ( Input.Pressed( "attack1" ) && AttackCooldown == 0)
+		{
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
+			Animator.Target.Set( "b_attack", true );
+			AttackCooldown = 1;
+			ItemStack stack = PlayerInventory.GetAt( SelectedSlot );
+			ToolType tool = ToolType.None;
+			float damage = 10;
+			if ( stack != null )
+			{
+				AttackCooldown = stack.ItemType.UseTime;
+				tool = stack.ItemType.ToolType;
+				damage = stack.ItemType.Damage;
+			}
+			if ( cameraTrace.Hit )
+			{
+				HealthComponent healthComponent = cameraTrace.GameObject.Components.Get<HealthComponent>();
+				if ( healthComponent != null )
+				{
+
+					healthComponent.Damage( damage, tool, PlayerInventory );
 				}
 			}
 		}

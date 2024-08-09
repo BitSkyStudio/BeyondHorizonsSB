@@ -204,6 +204,18 @@
       ]
     },
     {
+      "__guid": "6dbc609e-cac8-44e7-b3db-81dfdbf59dff",
+      "Flags": 0,
+      "Name": "stick (1)",
+      "Position": "124.1491,131.067,1.888638",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
       "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
       "Flags": 0,
       "Name": "stick",
@@ -238,7 +250,9 @@
               "Prefab": {
                 "_type": "gameobject",
                 "prefab": "rock.prefab"
-              }
+              },
+              "UseTime": 1,
+              "Damage": 10
             },
             "stick": {
               "Id": "stick",
@@ -247,7 +261,9 @@
               "Prefab": {
                 "_type": "gameobject",
                 "prefab": "stick.prefab"
-              }
+              },
+              "UseTime": 1,
+              "Damage": 10
             },
             "hatchet": {
               "Id": "hatchet",
@@ -256,7 +272,10 @@
               "Prefab": {
                 "_type": "gameobject",
                 "prefab": "hatchet.prefab"
-              }
+              },
+              "ToolType": "Axe",
+              "UseTime": 3,
+              "Damage": 50
             }
           }
         }
@@ -294,6 +313,47 @@
           }
         }
       ]
+    },
+    {
+      "__guid": "17e25f33-588d-4498-89f7-ace5f3aba7ee",
+      "Flags": 0,
+      "Name": "tree",
+      "Position": "142.1815,548.4412,11.36021",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "d21522ab-5a4a-4158-8bfd-c5f69b6a2803",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/pine_tree.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "233f5ee7-c0c0-4991-8f55-4d6a2fec8336",
+          "Center": "0,0,105.4994",
+          "IsTrigger": false,
+          "Scale": "50,50,220.9006",
+          "Static": false
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "cd452b13-8762-4f3c-9a59-0025514bd04e",
+          "Health": 100,
+          "Lives": 3,
+          "LootItem": {
+            "Id": "stick",
+            "Count": 1
+          },
+          "MaxHealth": 100,
+          "Regeneration": 5,
+          "ToolDamageModifiers": {
+            "Axe": 1
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -312,7 +372,7 @@
       "AgentHeight": 64,
       "AgentRadius": 16,
       "AgentStepSize": 21,
-      "AgentMaxSlope": 40,
+      "AgentMaxSlope": 45,
       "ExcludedBodies": "",
       "IncludedBodies": ""
     }
@@ -320,6 +380,8 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "luke.dnd_pine_tree"
+  ],
   "__version": 1
 }

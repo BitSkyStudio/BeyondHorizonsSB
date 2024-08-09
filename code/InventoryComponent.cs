@@ -80,12 +80,6 @@ public sealed class InventoryComponent : Component
 	public ItemStack GetAt( int index )
 	{
 		Items.TryAdd( index, null );
-		if ( Items[index] == null )
-			return null;
-		if ( Items[index].Count <= 0 )
-		{
-			Items[index] = null;
-		}
 		return Items[index]?.ToStack();
 	}
 	public ItemStack SetAt( int index, ItemStack item )
@@ -124,5 +118,11 @@ public sealed class InventoryComponent : Component
 		{
 			AddItem( recipeItem.ToStack() );
 		}
+	}
+	[Authority]
+	public void NetAddItem(ItemStackRaw item )
+	{
+		if(item != null)
+			AddItem( item.ToStack() );
 	}
 }
