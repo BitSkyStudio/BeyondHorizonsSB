@@ -61,7 +61,10 @@ public sealed class PlayerController : Component
 	public GameObject placingObject;
 	public string placingObjectId;
 
-	private float AttackCooldown = 0;
+	public float AttackCooldown = 0;
+	public float MaxAttackCooldown = 0;
+
+	public HealthComponent TargetedHealth = null;
 
 	protected override void OnUpdate()
 	{
@@ -112,7 +115,7 @@ public sealed class PlayerController : Component
 		var cameraTrace = cameraTraceSetup.Run();
 		bool keepPickupProgress = false;
 		bool keepPlacing = false;
-		if ( cameraTrace.Hit )
+		if ( cameraTrace.Hit && AttackCooldown == 0)
 		{
 			PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
 			if ( Input.Pressed( "attack2" ) || (Input.Down("attack2") && PickingUpObject != null) )
@@ -169,17 +172,19 @@ public sealed class PlayerController : Component
 				}
 			}
 		}
+		TargetedHealth = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<HealthComponent>():null;
+
 		AttackCooldown -= Time.Delta;
 		if(AttackCooldown < 0 )
 		{
 			AttackCooldown = 0;
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		}
-		if ( Input.Pressed( "attack1" ) && AttackCooldown == 0)
+		if ( Input.Down( "attack1" ) && AttackCooldown == 0)
 		{
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
 			Animator.Target.Set( "b_attack", true );
-			AttackCooldown = 1;
+			AttackCooldown = 0.5f;
 			ItemStack stack = PlayerInventory.GetAt( SelectedSlot );
 			ToolType tool = ToolType.None;
 			float damage = 10;
@@ -189,13 +194,17 @@ public sealed class PlayerController : Component
 				tool = stack.ItemType.ToolType;
 				damage = stack.ItemType.Damage;
 			}
+			MaxAttackCooldown = AttackCooldown;
 			if ( cameraTrace.Hit )
 			{
-				HealthComponent healthComponent = cameraTrace.GameObject.Components.Get<HealthComponent>();
-				if ( healthComponent != null )
+				if(cameraTrace.Surface != null )
+				{
+					Sound.Play( cameraTrace.Surface.Sounds.ImpactHard, cameraTrace.EndPosition );
+				}
+				if ( TargetedHealth != null )
 				{
 
-					healthComponent.Damage( damage, tool, PlayerInventory );
+					TargetedHealth.Damage( damage, tool, PlayerInventory );
 				}
 			}
 		}

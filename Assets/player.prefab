@@ -94,6 +94,16 @@
           "Knife": 1,
           "Shovel": 0.5
         }
+      },
+      {
+        "__type": "PlayerFootsteps",
+        "__guid": "5da73cf2-5adf-4da2-9c91-f9c0eb0e904d",
+        "Source": {
+          "_type": "component",
+          "component_id": "171b3c1a-a67a-4b4d-845b-ec432b9ba9d7",
+          "go": "4e2bd729-e4e3-44be-8fb5-b810c1b5122f",
+          "component_type": "SkinnedModelRenderer"
+        }
       }
     ],
     "Children": [],

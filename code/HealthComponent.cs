@@ -4,8 +4,10 @@ using System;
 public sealed class HealthComponent : Component
 {
 	[Property]
+	[Sync]
 	public float MaxHealth { get; set; } = 100f;
 	[Property]
+	[Sync]
 	public float Health { get; set; } = 100f;
 	[Property]
 	public float Regeneration { get; set; } = 0f;
@@ -15,14 +17,22 @@ public sealed class HealthComponent : Component
 	public int Lives { get; set; } = 1;
 	[Property]
 	public ItemStackRaw LootItem { get; set; } = null;
+	[Property]
+	public float RegenerationTime {  get; set; } = 10;
+	public float SinceLastHit { get; set; } = 0;
 	protected override void OnUpdate()
 	{
-		Health = MathF.Min( MaxHealth, Health + Regeneration * Time.Delta );
+		SinceLastHit += Time.Delta;
+		if ( SinceLastHit > RegenerationTime )
+		{
+			Health = MathF.Min( MaxHealth, Health + Regeneration * Time.Delta );
+		}
 	}
 
 	[Authority]
 	public void Damage(float damage, ToolType tool, InventoryComponent lootInventory )
 	{
+		SinceLastHit = 0;
 		Health -= damage * ToolDamageModifiers.GetValueOrDefault(tool, 0);
 		if ( Health <= 0 )
 		{

@@ -9,6 +9,19 @@
 			<div class="innerpickupbar" style="width: @(player.PickupProgress/player.PickingUpObject.Time*100)%"></div>
 		</div>
 	}
+	@if (player.AttackCooldown > 0)
+	{
+		<div class="attackcooldownbar">
+			<div class="innerattackcooldownbar" style="width: @(player.AttackCooldown/player.MaxAttackCooldown*100)%"></div>
+		</div>
+	}
+	@if (player.TargetedHealth != null)
+	{
+		<br />
+		<div class="otherhealthbar">
+			<div class="innerotherhealthbar" style="width: @(player.TargetedHealth.Health/player.TargetedHealth.MaxHealth*100)%"></div>
+		</div>
+	}
 	<div class="healthbar">
 		<div class="innerhealthbar" style="width: @(player.Health.Health/player.Health.MaxHealth*100)%"></div>
 	</div>

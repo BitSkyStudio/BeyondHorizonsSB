@@ -274,8 +274,19 @@
                 "prefab": "hatchet.prefab"
               },
               "ToolType": "Axe",
-              "UseTime": 3,
-              "Damage": 50
+              "UseTime": 1.5,
+              "Damage": 25
+            },
+            "campfire": {
+              "Id": "campfire",
+              "DisplayName": "Campfire",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "campfire.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
             }
           }
         }
@@ -336,7 +347,8 @@
           "Center": "0,0,105.4994",
           "IsTrigger": false,
           "Scale": "50,50,220.9006",
-          "Static": false
+          "Static": false,
+          "Surface": "surfaces/wood.surface"
         },
         {
           "__type": "HealthComponent",
@@ -349,6 +361,7 @@
           },
           "MaxHealth": 100,
           "Regeneration": 5,
+          "RegenerationTime": 10,
           "ToolDamageModifiers": {
             "Axe": 1
           }
