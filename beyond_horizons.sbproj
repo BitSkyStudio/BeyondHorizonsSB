@@ -1,7 +1,7 @@
 {
   "Title": "Beyond Horizons",
   "Type": "game",
-  "Org": "local",
+  "Org": "icp",
   "Ident": "beyond_horizons",
   "Schema": 1,
   "IncludeSourceFiles": false,

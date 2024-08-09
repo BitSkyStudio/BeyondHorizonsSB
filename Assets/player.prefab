@@ -72,6 +72,11 @@
         "IsTrigger": false,
         "Scale": "32.0002,32.0001,63.19988",
         "Static": false
+      },
+      {
+        "__type": "InventoryComponent",
+        "__guid": "1c56f94e-16a0-4b8e-b0b6-4cf40b770795",
+        "Size": 10
       }
     ],
     "Children": [],

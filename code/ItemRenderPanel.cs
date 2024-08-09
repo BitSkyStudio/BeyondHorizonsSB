@@ -54,16 +54,16 @@ namespace Sandbox
 				}
 				Item item = Game.ActiveScene.GetAllComponents<ItemRegistry>().First().Items[ItemId];
 				GameObject clone = item.Prefab.Clone();
-				Vector3 cameraPosition = clone.Children.Find( go => go.Name == "invview" ).Transform.Position;
+				Transform cameraTransform = clone.Children.Find( go => go.Name == "invview" ).Transform.World;
 				ModelRenderer modelRenderer = clone.Components.GetAll<ModelRenderer>().First();
 				Model model = modelRenderer.Model;
-				
+
 				SceneModel = new SceneModel( SceneWorld, model, modelRenderer.Transform.World );
 				clone.Destroy();
-				new SceneLight( SceneWorld, cameraPosition, 200, Color.White );
+				new SceneLight( SceneWorld, cameraTransform.Position, 200, Color.White );
 
-				scenePanel.Camera.Rotation = Rotation.LookAt( -cameraPosition );
-				scenePanel.Camera.Position = cameraPosition;
+				scenePanel.Camera.Rotation = /*Rotation.LookAt( -cameraPosition )*/cameraTransform.Rotation;
+				scenePanel.Camera.Position = cameraTransform.Position;
 
 				PrevItemId = ItemId;
 			}

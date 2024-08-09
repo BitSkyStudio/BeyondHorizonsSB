@@ -55,10 +55,9 @@ public sealed class PlayerController : Component
 
 	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( Vector3.Up * EyeHeight );
 
-	public Inventory PlayerInventory = new Inventory(10);
-
 	public int SelectedSlot = 0;
-	public int Slots => PlayerInventory.Items.Length;
+	public int Slots => PlayerInventory.Size;
+	public InventoryComponent PlayerInventory => Components.Get<InventoryComponent>();
 
 	public float PickupProgress = 0f;
 	public PickupableObject PickingUpObject = null;
