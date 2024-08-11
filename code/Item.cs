@@ -72,7 +72,7 @@ namespace Sandbox
 			foreach ( RecipeInput recipeItem in Inputs )
 			{
 				ItemStack stack = recipeItem.ToStack();
-				if ( inventory.CountItems( stack ) < stack.Count )
+				if ( inventory.CountItems( stack, InventoryComponent.SlotType.MachineInput ) < stack.Count )
 				{
 					return false;
 				}
@@ -95,7 +95,7 @@ namespace Sandbox
 			{
 				if ( recipeItem.Consume )
 				{
-					inventory.RemoveItem( recipeItem.ToStack() );
+					inventory.RemoveItem( recipeItem.ToStack(), InventoryComponent.SlotType.MachineInput );
 				}
 			}
 		}
@@ -103,7 +103,7 @@ namespace Sandbox
 		{
 			foreach ( ItemStackRaw recipeItem in Outputs )
 			{
-				inventory.AddItem( recipeItem.ToStack() );
+				inventory.AddItem( recipeItem.ToStack(), InventoryComponent.SlotType.MachineOutput );
 			}
 		}
 	}

@@ -36,14 +36,15 @@
 			InventoryComponent otherInventory = player.PlayerInventory == Inventory ? inventoryUI.Inventory : player.PlayerInventory;
 			if(value.y < 0){
 				ItemStack item = Inventory.GetAt(Id)?.Clone(1);
-				if (item != null)
+				if (item != null && Inventory.SlotSupports(Id, InventoryComponent.SlotType.Output) && otherInventory.CountFree(item, InventoryComponent.SlotType.Input) > 0)
 				{
 					Inventory.NetRemoveFromSlot(Id, 1);
-					otherInventory.NetAddItem(ItemStackRaw.FromStack(item));
+					otherInventory.NetAddItem(ItemStackRaw.FromStack(item), InventoryComponent.SlotType.Input);
 				}
 			} else {
 				ItemStack item = Inventory.GetAt(Id);
-				if (item != null && otherInventory.CountItems(item) > 0){
+				if (item != null && otherInventory.CountItems(item, InventoryComponent.SlotType.Output) > 0 && Inventory.SlotSupports(Id, InventoryComponent.SlotType.Input))
+				{
 					ItemStackRaw itemRaw = ItemStackRaw.FromStack(item.Clone(1));
 					otherInventory.NetRemoveItem(itemRaw);
 					Inventory.NetAddItemPreferSlot(itemRaw, Id);

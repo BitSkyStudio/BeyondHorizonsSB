@@ -33,7 +33,16 @@
       {
         "__type": "InventoryComponent",
         "__guid": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
-        "Size": 2
+        "Slots": {
+          "0": {
+            "SlotType": "Input, Output, MachineInput",
+            "Filter": []
+          },
+          "1": {
+            "SlotType": "Output, MachineOutput",
+            "Filter": []
+          }
+        }
       },
       {
         "__type": "MachineController",

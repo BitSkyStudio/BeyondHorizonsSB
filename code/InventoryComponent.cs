@@ -1,27 +1,35 @@
 using Sandbox;
 using System;
+using System.Threading.Tasks;
 
 public sealed class InventoryComponent : Component
 {
 	[Sync]
 	public NetDictionary<int,ItemStackRaw> Items {  get; set; }
 
-	[Sync]
+	public int Size => Slots.Count;
+
 	[Property]
-	public int Size { get; set; }
+	public Dictionary<int,SlotData> Slots { get; set; }
 
 	public InventoryComponent()
 	{
 		Items = new NetDictionary<int, ItemStackRaw>();
 		
 	}
-	public ItemStack AddItem( ItemStack item )
+	public bool SlotSupports(int slot, SlotType mask )
+	{
+		return (Slots[slot].SlotType & mask) != SlotType.None;
+	}
+	public ItemStack AddItem( ItemStack item , SlotType mask = SlotType.Any )
 	{
 		if ( item == null )
 			return null;
 		ItemStack itemsLeft = item.Clone();
 		for ( int i = 0; i < Items.Count; i++ )
 		{
+			if ( !SlotSupports(i, mask) )
+				continue;
 			if ( GetAt( i ) == null )
 			{
 				SetAt( i, itemsLeft );
@@ -43,11 +51,13 @@ public sealed class InventoryComponent : Component
 		}
 		return itemsLeft;
 	}
-	public int CountItems( ItemStack item )
+	public int CountItems( ItemStack item, SlotType mask = SlotType.Any )
 	{
 		int count = 0;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
+			if ( !SlotSupports( i, mask ) )
+				continue;
 			ItemStack foundItem = GetAt(i);
 			if ( foundItem != null && foundItem.Stacks( item ) )
 			{
@@ -56,12 +66,31 @@ public sealed class InventoryComponent : Component
 		}
 		return count;
 	}
-	public ItemStack RemoveItem( ItemStack item )
+	public int CountFree( ItemStack item, SlotType mask = SlotType.Any )
+	{
+		int count = 0;
+		for ( int i = 0; i < Items.Count; i++ )
+		{
+			if ( !SlotSupports( i, mask ) )
+				continue;
+			ItemStack foundItem = GetAt( i );
+			if(foundItem == null )
+			{
+				count += item.ItemType.StackSize;
+			} else if(foundItem.Stacks(item) ) {
+				count += foundItem.ItemType.StackSize-foundItem.Count;
+			}
+		}
+		return count;
+	}
+	public ItemStack RemoveItem( ItemStack item, SlotType mask = SlotType.Any )
 	{
 		if ( item == null ) return null;
 		ItemStack itemsLeft = item.Clone();
 		for ( int i = 0; i < Size; i++ )
 		{
+			if ( !SlotSupports(i, mask) )
+				continue;
 			if ( GetAt( i ) != null && GetAt(i).Stacks( itemsLeft ) )
 			{
 				int removed = Math.Min( itemsLeft.Count, GetAt(i).Count );
@@ -94,41 +123,44 @@ public sealed class InventoryComponent : Component
 	}
 	
 	[Authority]
-	public void NetAddItem(ItemStackRaw item )
+	public void NetAddItem(ItemStackRaw item, SlotType mask = SlotType.Any )
 	{
 		if(item != null)
-			AddItem( item.ToStack() );
+			AddItem( item.ToStack(), mask );
 	}
 	[Authority]
-	public void NetAddItemPreferSlot( ItemStackRaw item, int slot )
+	public void NetAddItemPreferSlot( ItemStackRaw item, int slot, SlotType mask = SlotType.Any )
 	{
 		if ( item != null )
 		{
 			ItemStack stack = item.ToStack();
 			if(slot >= 0 && slot < Size )
 			{
-				ItemStack stackOld = GetAt( slot );
-				if ( stackOld == null )
+				if ( SlotSupports( slot, mask ) )
 				{
-					SetAt( slot, stack );
-					return;
+					ItemStack stackOld = GetAt( slot );
+					if ( stackOld == null )
+					{
+						SetAt( slot, stack );
+						return;
+					}
+					else if ( stackOld != null && stackOld.Stacks( stack ) )
+					{
+						int addCount = Math.Min( stack.Count, stackOld.ItemType.StackSize - stackOld.Count );
+						stack.Count -= addCount;
+						stackOld.Count += addCount;
+						SetAt( slot, stackOld );
+					}
 				}
-				else if ( stackOld != null && stackOld.Stacks( stack ) )
-				{
-					int addCount = Math.Min( stack.Count, stackOld.ItemType.StackSize - stackOld.Count );
-					stack.Count -= addCount;
-					stackOld.Count += addCount;
-					SetAt( slot, stackOld );
-				} 
 			}
-			AddItem( stack );
+			AddItem( stack, mask );
 		}
 	}
 	[Authority]
-	public void NetRemoveItem( ItemStackRaw item )
+	public void NetRemoveItem( ItemStackRaw item, SlotType mask = SlotType.Any )
 	{
 		if ( item != null )
-			RemoveItem( item.ToStack() );
+			RemoveItem( item.ToStack(), mask );
 	}
 	[Authority]
 	public void NetRemoveFromSlot(int slot, int count )
@@ -142,5 +174,24 @@ public sealed class InventoryComponent : Component
 				SetAt( slot, item );
 			}
 		}
+	}
+	public struct SlotData
+	{
+		[Property]
+		[BitFlags]
+		public SlotType SlotType { get; set; }
+		[Property]
+		public List<string> Filter { get; set; }
+	}
+
+	[Flags]
+	public enum SlotType
+	{
+		Input = 1,
+		Output = 2,
+		MachineInput = 4,
+		MachineOutput = 8,
+		Any = -1,
+		None = 0
 	}
 }

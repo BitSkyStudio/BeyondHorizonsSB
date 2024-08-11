@@ -74,19 +74,59 @@
       {
         "__type": "InventoryComponent",
         "__guid": "1c56f94e-16a0-4b8e-b0b6-4cf40b770795",
-        "Size": 10
+        "Size": 10,
+        "Slots": {
+          "0": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "1": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "2": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "3": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "4": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "5": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "6": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "7": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "8": {
+            "SlotType": "Input, Output",
+            "filter": []
+          },
+          "9": {
+            "SlotType": "Input, Output",
+            "filter": []
+          }
+        }
       },
       {
         "__type": "HealthComponent",
         "__guid": "c45be642-c35c-4cd4-821b-a74b2c40609e",
         "Health": 75,
         "Lives": 1,
-        "LootItem": {
-          "Id": "",
-          "Count": 1
-        },
+        "LootItems": [],
         "MaxHealth": 100,
         "Regeneration": 1,
+        "RegenerationTime": 10,
         "ToolDamageModifiers": {
           "None": 1,
           "Axe": 1,
