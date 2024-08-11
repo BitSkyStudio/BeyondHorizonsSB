@@ -145,7 +145,7 @@
           "Static": true,
           "Storage": "terrain/terrain.terrain",
           "TerrainHeight": 10000,
-          "TerrainSize": 19968
+          "TerrainSize": 19960
         }
       ]
     },
@@ -177,14 +177,14 @@
         },
         {
           "__type": "PlayerUI",
-          "__guid": "28a413d8-1bad-4657-add6-e611d6e3cb6a"
+          "__guid": "cf09b22a-bf3a-46f6-a791-bc8492cffb6f"
         }
       ],
       "Children": [
         {
           "__guid": "b20055d9-f02b-41bf-bd90-5dc3f783e18f",
           "Flags": 0,
-          "Name": "InventoryScreen",
+          "Name": "CraftingScreen",
           "Enabled": true,
           "Components": [
             {
@@ -196,8 +196,28 @@
               "ZIndex": 50
             },
             {
+              "__type": "CraftingUI",
+              "__guid": "a3b75caa-630f-4250-b90f-6832b873c67c"
+            }
+          ]
+        },
+        {
+          "__guid": "50ab6238-3049-431c-8b71-d704d9b8b4f8",
+          "Flags": 0,
+          "Name": "InventoryScreen",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "58f7feb1-6c6c-46b8-9989-64b01cab21bc",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 50
+            },
+            {
               "__type": "InventoryUI",
-              "__guid": "0c4445c7-778a-4655-83c5-ee9fe5d8f47d"
+              "__guid": "9b1a0a00-971d-4ad6-9494-563ae7105feb"
             }
           ]
         }
@@ -307,11 +327,13 @@
               "Inputs": [
                 {
                   "Id": "stick",
-                  "Count": 1
+                  "Count": 1,
+                  "Consume": true
                 },
                 {
                   "Id": "rock",
-                  "Count": 1
+                  "Count": 1,
+                  "Consume": true
                 }
               ],
               "Outputs": [
@@ -319,7 +341,25 @@
                   "Id": "hatchet",
                   "Count": 1
                 }
-              ]
+              ],
+              "ProcessingTime": 1
+            },
+            "camp_stick": {
+              "RecipeType": "campfire",
+              "Inputs": [
+                {
+                  "Id": "stick",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "rock",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
             }
           }
         }
@@ -355,16 +395,101 @@
           "__guid": "cd452b13-8762-4f3c-9a59-0025514bd04e",
           "Health": 100,
           "Lives": 3,
-          "LootItem": {
-            "Id": "stick",
-            "Count": 1
-          },
+          "LootItems": [
+            {
+              "Id": "stick",
+              "Count": 1
+            }
+          ],
           "MaxHealth": 100,
           "Regeneration": 5,
           "RegenerationTime": 10,
           "ToolDamageModifiers": {
             "Axe": 1
           }
+        }
+      ]
+    },
+    {
+      "__guid": "fe460539-781e-4548-800d-66afd40c61da",
+      "Flags": 0,
+      "Name": "campfire",
+      "Position": "83.35123,208.4301,0.9999465",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "campfire.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "7f2066ee-0442-484c-960a-22d92f3862d0",
+      "Flags": 0,
+      "Name": "reindeer",
+      "Position": "445.2701,1000.251,14.39853",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "048cfc41-f01a-406f-8cda-e46c61f47921",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/fauna/elk/reindeer.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "AnimalController",
+          "__guid": "caecf786-516a-4871-95a2-bda2a14d63ed",
+          "Agent": {
+            "_type": "component",
+            "component_id": "b06544cb-6f0f-4074-b5a6-b91dfd5fc920",
+            "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
+            "component_type": "NavMeshAgent"
+          }
+        },
+        {
+          "__type": "Sandbox.NavMeshAgent",
+          "__guid": "b06544cb-6f0f-4074-b5a6-b91dfd5fc920",
+          "Acceleration": 50,
+          "Height": 72.8,
+          "MaxSpeed": 120,
+          "Radius": 19.600004,
+          "Separation": 0.25,
+          "UpdatePosition": true,
+          "UpdateRotation": false
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "4a1ea19d-2b33-4769-b675-49ea8ad7777b",
+          "Health": 100,
+          "Lives": 1,
+          "LootItems": [],
+          "MaxHealth": 100,
+          "Regeneration": 1,
+          "RegenerationTime": 60,
+          "ToolDamageModifiers": {
+            "Knife": 1
+          }
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "0a78a39e-98e6-4b9a-a1e2-d54420a69ccc",
+          "__enabled": false,
+          "Locking": {},
+          "Model": "models/fauna/elk/reindeer.vmdl",
+          "MotionEnabled": true,
+          "Renderer": {
+            "_type": "component",
+            "component_id": "048cfc41-f01a-406f-8cda-e46c61f47921",
+            "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
         }
       ]
     }
@@ -378,7 +503,7 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "NavMesh": {
-      "Enabled": false,
+      "Enabled": true,
       "IncludeStaticBodies": true,
       "IncludeKeyframedBodies": true,
       "EditorAutoUpdate": true,
@@ -394,6 +519,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
+    "fish.reindeer",
     "luke.dnd_pine_tree"
   ],
   "__version": 1

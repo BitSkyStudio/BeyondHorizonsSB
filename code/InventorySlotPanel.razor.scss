@@ -1,0 +1,19 @@
+InventorySlotPanel {
+	.slot {
+		font-size: 24px;
+		width: 64px;
+		height: 64px;
+		background-color: gray;
+		border-radius: 8px;
+		transition: all 0.1s ease;
+
+		&.active {
+			background-color: lightgray;
+			width: 96px;
+			height: 96px;
+		}
+
+		> .hotbarcounter {
+		}
+	}
+}

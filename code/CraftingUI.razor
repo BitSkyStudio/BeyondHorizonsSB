@@ -1,0 +1,41 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if(!IsOpen) return;
+	<div class="craftmenu">
+		@foreach(Recipe recipe in Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType("crafting")){
+			var recipeCopy = recipe;
+			<div class="craftslot" onclick=@(e=>craft(recipeCopy)) style="border-color:@(recipeCopy.CanCraft(player.PlayerInventory)?"green":"red");">
+				<ItemRenderPanel ItemId=@recipe.Outputs[0].Id></ItemRenderPanel>
+			</div>
+		}
+	</div>
+</root>
+
+@code
+{
+	public bool IsOpen {get;set;} = false;
+
+	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
+
+	public void craft(Recipe recipe){
+		if (player.AttackCooldown == 0)
+		{
+			if (recipe.Craft(player.PlayerInventory))
+			{
+				player.AttackCooldown = recipe.ProcessingTime;
+			}
+		}
+	}
+
+	protected override void OnUpdate(){
+		base.OnUpdate();
+		if(Input.Pressed("OpenInventory")){
+			IsOpen = !IsOpen && player.TargettingOpenableInventory==null;
+		}
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
+}

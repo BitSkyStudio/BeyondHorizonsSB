@@ -92,37 +92,55 @@ public sealed class InventoryComponent : Component
 		Items[index] = ItemStackRaw.FromStack(item);
 		return previous;
 	}
-	public bool CanCraft( Recipe recipe )
-	{
-		foreach ( ItemStackRaw recipeItem in recipe.Inputs )
-		{
-			ItemStack stack = recipeItem.ToStack();
-			if ( CountItems( stack ) < stack.Count )
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	public void Craft( Recipe recipe )
-	{
-		if ( !CanCraft( recipe ) )
-		{
-			return;
-		}
-		foreach ( ItemStackRaw recipeItem in recipe.Inputs )
-		{
-			RemoveItem( recipeItem.ToStack() );
-		}
-		foreach ( ItemStackRaw recipeItem in recipe.Outputs )
-		{
-			AddItem( recipeItem.ToStack() );
-		}
-	}
+	
 	[Authority]
 	public void NetAddItem(ItemStackRaw item )
 	{
 		if(item != null)
 			AddItem( item.ToStack() );
+	}
+	[Authority]
+	public void NetAddItemPreferSlot( ItemStackRaw item, int slot )
+	{
+		if ( item != null )
+		{
+			ItemStack stack = item.ToStack();
+			if(slot >= 0 && slot < Size )
+			{
+				ItemStack stackOld = GetAt( slot );
+				if ( stackOld == null )
+				{
+					SetAt( slot, stack );
+					return;
+				}
+				else if ( stackOld != null && stackOld.Stacks( stack ) )
+				{
+					int addCount = Math.Min( stack.Count, stackOld.ItemType.StackSize - stackOld.Count );
+					stack.Count -= addCount;
+					stackOld.Count += addCount;
+					SetAt( slot, stackOld );
+				} 
+			}
+			AddItem( stack );
+		}
+	}
+	[Authority]
+	public void NetRemoveItem( ItemStackRaw item )
+	{
+		if ( item != null )
+			RemoveItem( item.ToStack() );
+	}
+	[Authority]
+	public void NetRemoveFromSlot(int slot, int count )
+	{
+		if( slot >= 0 && slot < Size )
+		{
+			ItemStack item = GetAt( slot );
+			if(item != null )
+			{
+				item.Count -= count;
+				SetAt( slot, item );
+			}
+		}
 	}
 }

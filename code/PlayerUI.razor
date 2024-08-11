@@ -25,21 +25,10 @@
 	<div class="healthbar">
 		<div class="innerhealthbar" style="width: @(player.Health.Health/player.Health.MaxHealth*100)%"></div>
 	</div>
-	<div class="hotbar">
+	<div class="hotbar" style=@((Game.ActiveScene.GetAllComponents<InventoryUI>().First().Object != null)?"pointer-events: all;":"pointer-events: none;")>
 		@for (int i = 0; i < player.Slots; i++)
 		{
-			<div class="slot @(player.SelectedSlot==i?"active":"")">
-				@{
-					var item = player.PlayerInventory.GetAt(i);
-					if (item != null)
-					{
-						<p class="hotbarcounter">
-							@(item.Count)
-						</p>
-						<ItemRenderPanel ItemId=@item.ItemType.Id></ItemRenderPanel>
-					}
-				}
-			</div>
+			<InventorySlotPanel Inventory=@player.PlayerInventory Id=@i Active=@(player.SelectedSlot==i)></InventorySlotPanel>
 		}
 	</div>
 </root>

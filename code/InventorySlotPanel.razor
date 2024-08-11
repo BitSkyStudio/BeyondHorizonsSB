@@ -1,0 +1,59 @@
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+	<div class="slot @(Active?"active":"")">
+		@if(Inventory != null){
+					var item = Inventory.GetAt(Id);
+					if (item != null)
+					{
+						<p class="hotbarcounter">
+							@(item.Count)
+						</p>
+						<ItemRenderPanel ItemId=@item.ItemType.Id></ItemRenderPanel>
+					}
+				}
+	</div>
+</root>
+
+@code
+{
+
+	[Property]
+	public InventoryComponent Inventory { get; set; } = null;
+	[Property]
+	public int Id { get; set; } = 0;
+	[Property]
+	public bool Active { get; set; } = false;
+
+	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
+	public InventoryUI inventoryUI => Game.ActiveScene.GetAllComponents<InventoryUI>().First();
+
+	public override void OnMouseWheel(Vector2 value){
+		if(inventoryUI.Inventory != null){
+			InventoryComponent otherInventory = player.PlayerInventory == Inventory ? inventoryUI.Inventory : player.PlayerInventory;
+			if(value.y < 0){
+				ItemStack item = Inventory.GetAt(Id)?.Clone(1);
+				if (item != null)
+				{
+					Inventory.NetRemoveFromSlot(Id, 1);
+					otherInventory.NetAddItem(ItemStackRaw.FromStack(item));
+				}
+			} else {
+				ItemStack item = Inventory.GetAt(Id);
+				if (item != null && otherInventory.CountItems(item) > 0){
+					ItemStackRaw itemRaw = ItemStackRaw.FromStack(item.Clone(1));
+					otherInventory.NetRemoveItem(itemRaw);
+					Inventory.NetAddItemPreferSlot(itemRaw, Id);
+				}
+			}
+		}
+	}	
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
+}

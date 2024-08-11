@@ -34,6 +34,21 @@
         "__type": "InventoryComponent",
         "__guid": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
         "Size": 2
+      },
+      {
+        "__type": "MachineController",
+        "__guid": "3697ac72-154d-4035-9420-1f662a044cd7",
+        "Inventory": {
+          "_type": "component",
+          "component_id": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
+          "go": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+          "component_type": "InventoryComponent"
+        },
+        "RecipeType": "campfire"
+      },
+      {
+        "__type": "OpenableInventory",
+        "__guid": "e2af414b-e36a-46e3-92d4-8d20add788f7"
       }
     ],
     "Children": [

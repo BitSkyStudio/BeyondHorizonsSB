@@ -66,6 +66,8 @@ public sealed class PlayerController : Component
 
 	public HealthComponent TargetedHealth = null;
 
+	public OpenableInventory TargettingOpenableInventory = null;
+
 	protected override void OnUpdate()
 	{
 		foreach ( SkinnedModelRenderer renderer in Components.GetAll<SkinnedModelRenderer>() ) {
@@ -172,6 +174,8 @@ public sealed class PlayerController : Component
 				}
 			}
 		}
+		TargettingOpenableInventory = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<OpenableInventory>():null;
+
 		TargetedHealth = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<HealthComponent>():null;
 
 		AttackCooldown -= Time.Delta;

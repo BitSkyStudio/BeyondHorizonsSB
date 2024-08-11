@@ -16,12 +16,13 @@ public sealed class HealthComponent : Component
 	[Property]
 	public int Lives { get; set; } = 1;
 	[Property]
-	public ItemStackRaw LootItem { get; set; } = null;
+	public List<ItemStackRaw> LootItems { get; set; }
 	[Property]
 	public float RegenerationTime {  get; set; } = 10;
 	public float SinceLastHit { get; set; } = 0;
 	protected override void OnUpdate()
 	{
+		if ( IsProxy ) return;
 		SinceLastHit += Time.Delta;
 		if ( SinceLastHit > RegenerationTime )
 		{
@@ -38,9 +39,11 @@ public sealed class HealthComponent : Component
 		{
 			Lives -= 1;
 			Health = MaxHealth;
-			if(LootItem != null && LootItem.Id.Length > 0 && lootInventory != null)
+			if ( lootInventory != null )
 			{
-				lootInventory.NetAddItem( LootItem );
+				foreach( ItemStackRaw item in LootItems ) { 
+					lootInventory.NetAddItem( item );
+				}
 			}
 			if ( Lives <= 0 )
 			{

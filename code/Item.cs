@@ -48,18 +48,79 @@ namespace Sandbox
 		{
 			return new ItemStack( ItemType, Count );
 		}
+		public ItemStack Clone(int newCount)
+		{
+			return new ItemStack( ItemType, newCount );
+		}
 	}
 	public class Recipe
 	{
 		public string RecipeType {  get; set; }
-		public List<ItemStackRaw> Inputs {  get; set; }
+		public List<RecipeInput> Inputs {  get; set; }
 		public List<ItemStackRaw> Outputs {  get; set; }
+		public float ProcessingTime {  get; set; }
 		
 		public Recipe()
 		{
 			RecipeType = "crafting";
-			Inputs = new List<ItemStackRaw>();
+			Inputs = new List<RecipeInput>();
 			Outputs = new List<ItemStackRaw>();
+			ProcessingTime = 1;
+		}
+		public bool CanCraft( InventoryComponent inventory )
+		{
+			foreach ( RecipeInput recipeItem in Inputs )
+			{
+				ItemStack stack = recipeItem.ToStack();
+				if ( inventory.CountItems( stack ) < stack.Count )
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		public bool Craft( InventoryComponent inventory )
+		{
+			if ( !CanCraft( inventory ) )
+			{
+				return false;
+			}
+			ConsumeInputs(inventory);
+			AddOutputs( inventory );
+			return true;
+		}
+		public void ConsumeInputs( InventoryComponent inventory )
+		{
+			foreach ( RecipeInput recipeItem in Inputs )
+			{
+				if ( recipeItem.Consume )
+				{
+					inventory.RemoveItem( recipeItem.ToStack() );
+				}
+			}
+		}
+		public void AddOutputs(InventoryComponent inventory )
+		{
+			foreach ( ItemStackRaw recipeItem in Outputs )
+			{
+				inventory.AddItem( recipeItem.ToStack() );
+			}
+		}
+	}
+	public class RecipeInput
+	{
+		public string Id { get; set; }
+		public int Count { get; set; }
+		public bool Consume { get; set; }
+		public RecipeInput()
+		{
+			Id = "";
+			Count = 1;
+			Consume = true;
+		}
+		public ItemStack ToStack()
+		{
+			return ItemStack.Create( Id, Count );
 		}
 	}
 	public class ItemStackRaw

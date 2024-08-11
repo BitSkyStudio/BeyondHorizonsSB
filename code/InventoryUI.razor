@@ -3,33 +3,51 @@
 @inherits PanelComponent
 
 <root>
-	@if(!IsOpen) return;
-	<div class="craftmenu">
-		@foreach(Recipe recipe in Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType("crafting")){
-			var recipeCopy = recipe;
-			<div class="craftslot" onclick=@(e=>craft(recipeCopy)) style="border-color:@(player.PlayerInventory.CanCraft(recipeCopy)?"green":"red");">
-				<ItemRenderPanel ItemId=@recipe.Outputs[0].Id></ItemRenderPanel>
-			</div>
+	
+	@if(Object == null) {
+		if(TargettingOpenableInventory != null){
+			<p class="prompt">[@Input.GetButtonOrigin("OpenInventory")]Open Inventory</p>
+		}
+		return;
+	}
+	<div class="inventory">
+		@for (int i = 0; i < Inventory.Size; i++)
+		{
+			<InventorySlotPanel Inventory=@Inventory Id=@i></InventorySlotPanel>
+		}
+		@if (Machine != null)
+		{
+			<p>Progress: @((Machine.ProcessingTimeTotal != 0)?((int)(100*(1-Machine.ProcessingTimeLeft / Machine.ProcessingTimeTotal)))+"%":"Not Working")</p>
 		}
 	</div>
 </root>
 
 @code
 {
-	public bool IsOpen {get;set;} = false;
+	[Property]
+	public OpenableInventory Object { get; set; } = null;
 
-	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
+	public InventoryComponent Inventory => Object?.Components?.Get<InventoryComponent>();
+	public MachineController Machine => Object?.Components?.Get<MachineController>();
+	public OpenableInventory TargettingOpenableInventory => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner).TargettingOpenableInventory;
 
-	public void craft(Recipe recipe){
-		player.PlayerInventory.Craft(recipe);
-	}
-
-	protected override void OnUpdate(){
+	protected override void OnUpdate()
+	{
 		base.OnUpdate();
-		if(Input.Pressed("OpenInventory")){
-			IsOpen = !IsOpen;
+		if (Input.Pressed("OpenInventory"))
+		{
+			if(Object == null)
+			{
+				Object = TargettingOpenableInventory;
+			} else
+			{
+				Object = null;
+			}
 		}
 	}
 
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
 	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
 }
