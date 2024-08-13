@@ -37,7 +37,7 @@
         "Bounciness": 0.3,
         "GroundAngle": 45,
         "Height": 64,
-        "IgnoreLayers": "",
+        "IgnoreLayers": "grass",
         "Radius": 16,
         "StepHeight": 21.02,
         "UseCollisionRules": false
@@ -74,54 +74,53 @@
       {
         "__type": "InventoryComponent",
         "__guid": "1c56f94e-16a0-4b8e-b0b6-4cf40b770795",
-        "Size": 10,
         "Slots": {
           "0": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "1": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "2": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "3": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "4": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "5": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "6": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "7": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "8": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           },
           "9": {
-            "SlotType": "Input, Output",
-            "filter": []
+            "SlotType": "Input, Output, MachineInput, MachineOutput",
+            "Filter": []
           }
         }
       },
       {
         "__type": "HealthComponent",
         "__guid": "c45be642-c35c-4cd4-821b-a74b2c40609e",
-        "Health": 75,
+        "Health": 100,
         "Lives": 1,
         "LootItems": [],
         "MaxHealth": 100,

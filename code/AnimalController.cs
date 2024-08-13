@@ -8,8 +8,13 @@ public sealed class AnimalController : Component
 	public bool Set = false;
 	protected override void OnUpdate()
 	{
-		if ( IsProxy ) return;
-		if ( Set ) return;
+		//if ( IsProxy ) return;
+		//if ( Set ) return;
+		//Vector3? newPosition = Scene.NavMesh.GetRandomPoint( Transform.Position, 1000 );
+		//Agent.MoveTo( Game.ActiveScene.GetAllComponents<PlayerController>().First().Transform.Position );
+		//Log.Info( Agent.WishVelocity );
+		//Set = true;
+		return;
 		Log.Info( Scene.NavMesh );
 		Vector3? point = Scene.NavMesh.GetClosestPoint( new Vector3( 0, 0, 0 ), 1000 );
 		//Vector3? point = Scene.NavMesh.GetRandomPoint();

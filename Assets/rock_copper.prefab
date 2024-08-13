@@ -1,0 +1,66 @@
+{
+  "RootObject": {
+    "__guid": "69d82297-450a-44a0-acb9-9afb67a01467",
+    "Flags": 0,
+    "Name": "rock_copper",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "32ba7248-dc5e-4ae9-a64a-a5b5f0d785bc",
+        "Center": "0,0,10",
+        "IsTrigger": false,
+        "Scale": "40,42.5,20",
+        "Static": false,
+        "Surface": "surfaces/slippy_wheels.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "97d07493-94d9-4dc2-9b0b-c114ca2aab24",
+        "ItemId": "rock_copper",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d495ab4c-c135-4915-8d93-bd8fb5d657bf",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-13.65775,24.55289,40.56176",
+        "Rotation": "0.211309,0.3659982,-0.4531537,0.7848856",
+        "Enabled": true
+      },
+      {
+        "__guid": "8661fe6c-ee7c-441a-991b-edab826ead8a",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,1.734319,10.81426",
+        "Scale": "0.4451122,0.2522476,0.1986432",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "c2a6b733-a77b-4145-992f-bceb42221e8a",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "terrain/rock_copper.vmat",
+            "Model": "rock kit/rock_2.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "gkaf.rock_2"
+  ],
+  "__version": 1
+}

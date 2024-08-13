@@ -22,6 +22,7 @@ public sealed class MachineController : Component
 			CurrentRecipe = Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType( RecipeType ).FirstOrDefault( recipe => recipe.CanCraft( Inventory ), null );
 			if ( CurrentRecipe != null )
 			{
+				CurrentRecipe.ConsumeInputs( Inventory );
 				ProcessingTimeLeft = CurrentRecipe.ProcessingTime;
 				ProcessingTimeTotal = CurrentRecipe.ProcessingTime;
 			} else
@@ -33,7 +34,6 @@ public sealed class MachineController : Component
 		if ( ProcessingTimeLeft < 0 ) ProcessingTimeLeft = 0;
 		if(ProcessingTimeLeft == 0 && CurrentRecipe != null)
 		{
-			CurrentRecipe.ConsumeInputs( Inventory );
 			CurrentRecipe.AddOutputs( Inventory );
 			CurrentRecipe = null;
 		}

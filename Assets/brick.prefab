@@ -1,0 +1,66 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "brick",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "0,0,6.699996",
+        "IsTrigger": false,
+        "Scale": "36.90004,14.70005,13.00002",
+        "Static": false,
+        "Surface": "surfaces/brick.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "brick",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-33.86684,-24.836,24.98455",
+        "Rotation": "-0.1185536,0.2040077,0.3368086,0.9115293",
+        "Enabled": true
+      },
+      {
+        "__guid": "28c82b46-4ab2-4df5-9dc4-289580312445",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,5.344731,6.460611",
+        "Rotation": "0.7071067,0,0,0.7071068",
+        "Scale": "3,3,3",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "272eb2ce-970b-478a-879e-7a0e3c37ede7",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/brick_single/brick_single_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.brick_single_02"
+  ],
+  "__version": 1
+}

@@ -17,9 +17,9 @@ public sealed class InventoryComponent : Component
 		Items = new NetDictionary<int, ItemStackRaw>();
 		
 	}
-	public bool SlotSupports(int slot, SlotType mask )
+	public bool SlotSupports(int slot, SlotType mask, ItemStack item )
 	{
-		return (Slots[slot].SlotType & mask) != SlotType.None;
+		return (Slots[slot].SlotType & mask) != SlotType.None && ((item == null ? true : Slots[slot].Filter.Contains(item.ItemType.Id)) || Slots[slot].Filter.Count == 0);
 	}
 	public ItemStack AddItem( ItemStack item , SlotType mask = SlotType.Any )
 	{
@@ -28,7 +28,7 @@ public sealed class InventoryComponent : Component
 		ItemStack itemsLeft = item.Clone();
 		for ( int i = 0; i < Items.Count; i++ )
 		{
-			if ( !SlotSupports(i, mask) )
+			if ( !SlotSupports(i, mask, itemsLeft) )
 				continue;
 			if ( GetAt( i ) == null )
 			{
@@ -56,7 +56,7 @@ public sealed class InventoryComponent : Component
 		int count = 0;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
-			if ( !SlotSupports( i, mask ) )
+			if ( !SlotSupports( i, mask, null ) )
 				continue;
 			ItemStack foundItem = GetAt(i);
 			if ( foundItem != null && foundItem.Stacks( item ) )
@@ -71,7 +71,7 @@ public sealed class InventoryComponent : Component
 		int count = 0;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
-			if ( !SlotSupports( i, mask ) )
+			if ( !SlotSupports( i, mask, item ) )
 				continue;
 			ItemStack foundItem = GetAt( i );
 			if(foundItem == null )
@@ -89,12 +89,11 @@ public sealed class InventoryComponent : Component
 		ItemStack itemsLeft = item.Clone();
 		for ( int i = 0; i < Size; i++ )
 		{
-			if ( !SlotSupports(i, mask) )
+			if ( !SlotSupports(i, mask, null) )
 				continue;
 			if ( GetAt( i ) != null && GetAt(i).Stacks( itemsLeft ) )
 			{
 				int removed = Math.Min( itemsLeft.Count, GetAt(i).Count );
-				Log.Info( "rem: " + removed );
 				itemsLeft.Count -= removed;
 				ItemStack slot = GetAt( i );
 				slot.Count -= removed;
@@ -136,7 +135,7 @@ public sealed class InventoryComponent : Component
 			ItemStack stack = item.ToStack();
 			if(slot >= 0 && slot < Size )
 			{
-				if ( SlotSupports( slot, mask ) )
+				if ( SlotSupports( slot, mask, stack ) )
 				{
 					ItemStack stackOld = GetAt( slot );
 					if ( stackOld == null )

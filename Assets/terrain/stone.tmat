@@ -1,7 +1,7 @@
 {
-  "AlbedoImage": "terrain/stone.jpg",
+  "AlbedoImage": "terrain/rock_albedo.png",
   "RoughnessImage": "materials/default/default_rough.tga",
-  "NormalImage": "materials/default/default_normal.tga",
+  "NormalImage": "terrain/rock_normal.png",
   "HeightImage": "materials/default/default_height.tga",
   "AOImage": "materials/default/default_ao.tga",
   "UVScale": 1,

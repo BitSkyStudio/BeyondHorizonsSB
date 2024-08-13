@@ -1,0 +1,65 @@
+{
+  "RootObject": {
+    "__guid": "69d82297-450a-44a0-acb9-9afb67a01467",
+    "Flags": 0,
+    "Name": "dirt_pile",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "32ba7248-dc5e-4ae9-a64a-a5b5f0d785bc",
+        "Center": "0,0,2.100004",
+        "IsTrigger": false,
+        "Scale": "29.50009,27.60009,2.599978",
+        "Static": false,
+        "Surface": "surfaces/slippy_wheels.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "97d07493-94d9-4dc2-9b0b-c114ca2aab24",
+        "ItemId": "dirt_pile",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d495ab4c-c135-4915-8d93-bd8fb5d657bf",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-18.52777,32.98796,23.69161",
+        "Rotation": "0.1294095,0.224144,-0.482963,0.8365165",
+        "Enabled": true
+      },
+      {
+        "__guid": "8661fe6c-ee7c-441a-991b-edab826ead8a",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,-0.7966454,1.366232",
+        "Scale": "0.621,0.756,0.995",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "c2a6b733-a77b-4145-992f-bceb42221e8a",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/dirt_pile/dirt_pile_04.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.dirtpile_04"
+  ],
+  "__version": 1
+}

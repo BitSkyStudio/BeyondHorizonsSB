@@ -9,20 +9,13 @@
     "OwnerTransfer": 0,
     "Components": [
       {
-        "__type": "Sandbox.ModelRenderer",
-        "__guid": "c420121a-cb84-435e-bfe4-18221fb6b4dd",
-        "BodyGroups": 18446744073709551615,
-        "Model": "models/forest/bigrock_5.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1"
-      },
-      {
         "__type": "Sandbox.BoxCollider",
         "__guid": "32ba7248-dc5e-4ae9-a64a-a5b5f0d785bc",
         "Center": "0,0,10",
         "IsTrigger": false,
         "Scale": "40,42.5,20",
-        "Static": false
+        "Static": false,
+        "Surface": "surfaces/slippy_wheels.surface"
       },
       {
         "__type": "PickupableObject",
@@ -39,6 +32,25 @@
         "Position": "-18.52777,32.98796,23.69161",
         "Rotation": "0.1294095,0.224144,-0.482963,0.8365165",
         "Enabled": true
+      },
+      {
+        "__guid": "8661fe6c-ee7c-441a-991b-edab826ead8a",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,1.734319,10.81426",
+        "Scale": "0.4451122,0.2522476,0.1986432",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "c2a6b733-a77b-4145-992f-bceb42221e8a",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "terrain/rock.vmat",
+            "Model": "rock kit/rock_2.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
       }
     ],
     "__variables": []
@@ -48,7 +60,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "ambi.rock_5"
+    "gkaf.rock_2"
   ],
   "__version": 1
 }

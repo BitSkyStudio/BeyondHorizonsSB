@@ -22,7 +22,8 @@
         "Center": "0,0,0.9000001",
         "IsTrigger": false,
         "Scale": "29.00005,5.400035,5.800022",
-        "Static": false
+        "Static": false,
+        "Surface": "surfaces/wood.surface"
       },
       {
         "__type": "PickupableObject",

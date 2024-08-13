@@ -1,6 +1,6 @@
 {
-  "AlbedoImage": "terrain/grass.jpg",
-  "RoughnessImage": "materials/default/default_rough.tga",
+  "AlbedoImage": "terrain/grass2.jpg",
+  "RoughnessImage": "materials/default/default_ao.tga",
   "NormalImage": "materials/default/default_normal.tga",
   "HeightImage": "materials/default/default_height.tga",
   "AOImage": "materials/default/default_ao.tga",
@@ -9,9 +9,7 @@
   "Metalness": 0,
   "NormalStrength": 1,
   "HeightBlendStrength": 1,
-  "Surface": null,
-  "__references": [
-    "duccsoft.forest_sticks_tmat"
-  ],
+  "Surface": "surfaces/grass.surface",
+  "__references": [],
   "__version": 0
 }

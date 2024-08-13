@@ -1,0 +1,65 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "grass_fiber",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "0,0,0.9000001",
+        "IsTrigger": false,
+        "Scale": "16.30002,16.30005,5.800022",
+        "Static": false,
+        "Surface": "surfaces/grass.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "grass_fiber",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "9.518085,-0.178442,26.1277",
+        "Rotation": "0.0000000009708313,0.8186504,-0.000000001383915,0.5742922",
+        "Enabled": true
+      },
+      {
+        "__guid": "28c82b46-4ab2-4df5-9dc4-289580312445",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,0,2.212758",
+        "Scale": "0.5,0.5,0.5",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "272eb2ce-970b-478a-879e-7a0e3c37ede7",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/nature/grass/grass_billboard.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "fish.grass_billboard"
+  ],
+  "__version": 1
+}

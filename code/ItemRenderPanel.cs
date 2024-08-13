@@ -59,8 +59,9 @@ namespace Sandbox
 				Model model = modelRenderer.Model;
 
 				SceneModel = new SceneModel( SceneWorld, model, modelRenderer.Transform.World );
+				SceneModel.SetMaterialOverride( modelRenderer.MaterialOverride );
 				clone.Destroy();
-				new SceneLight( SceneWorld, cameraTransform.Position, 200, Color.White );
+				new SceneLight( SceneWorld, cameraTransform.Position, 20000, Color.White * 3 );
 
 				scenePanel.Camera.Rotation = /*Rotation.LookAt( -cameraPosition )*/cameraTransform.Rotation;
 				scenePanel.Camera.Position = cameraTransform.Position;

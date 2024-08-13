@@ -1,0 +1,70 @@
+{
+  "RootObject": {
+    "__guid": "d9facd81-124e-48ca-90cf-6372b362edaf",
+    "Flags": 0,
+    "Name": "tree",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "a6c26085-f2aa-4925-ada8-09894ea51999",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/sbox_props/trees/oak/tree_oak_small_a.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "755fda56-302f-4ee2-bfbd-7d7f4a99232e",
+        "IsTrigger": false,
+        "Model": "models/sbox_props/trees/oak/tree_oak_small_a.vmdl",
+        "Static": false,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "91565676-8155-442a-9c99-35521a137869",
+        "__enabled": false,
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "HealthComponent",
+        "__guid": "4f1b7506-8f86-4f73-aaa5-e9fa55530087",
+        "Health": 1,
+        "Lives": 1,
+        "LootItems": [
+          {
+            "Id": "log",
+            "Count": 5
+          }
+        ],
+        "MaxHealth": 250,
+        "Regeneration": 5,
+        "RegenerationTime": 10,
+        "ToolDamageModifiers": {
+          "Axe": 1
+        }
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.tree_oak_small_a"
+  ],
+  "__version": 1
+}

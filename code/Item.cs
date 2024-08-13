@@ -77,6 +77,14 @@ namespace Sandbox
 					return false;
 				}
 			}
+			foreach ( ItemStackRaw outputItem in Outputs )
+			{
+				ItemStack stack = outputItem.ToStack();
+				if ( inventory.CountFree( stack, InventoryComponent.SlotType.MachineOutput) < stack.Count )
+				{
+					return false;
+				}
+			}
 			return true;
 		}
 		public bool Craft( InventoryComponent inventory )
@@ -116,7 +124,7 @@ namespace Sandbox
 		{
 			Id = "";
 			Count = 1;
-			Consume = true;
+			Consume = false;
 		}
 		public ItemStack ToStack()
 		{

@@ -14,7 +14,8 @@
         "Center": "1.400001,-1.2,1.6",
         "IsTrigger": false,
         "Scale": "28.20007,10.00004,2.400017",
-        "Static": false
+        "Static": false,
+        "Surface": "surfaces/metal.weapon.surface"
       },
       {
         "__type": "PickupableObject",

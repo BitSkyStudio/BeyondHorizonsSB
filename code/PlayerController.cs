@@ -119,31 +119,9 @@ public sealed class PlayerController : Component
 		bool keepPlacing = false;
 		if ( cameraTrace.Hit && AttackCooldown == 0)
 		{
-			PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
-			if ( Input.Pressed( "attack2" ) || (Input.Down("attack2") && PickingUpObject != null) )
+			if (cameraTrace.Normal.DistanceSquared(Vector3.Up) < 0.2f && cameraTrace.GameObject.Tags.Has("placable"))
 			{
-				if ( pickupableObject != null )
-				{
-					if ( pickupableObject == PickingUpObject )
-					{
-						PickupProgress += Time.Delta;
-					} else
-					{
-						PickupProgress = 0;
-						PickingUpObject = pickupableObject;
-					}
-					keepPickupProgress = true;
-					if ( PickupProgress >= pickupableObject.Time )
-					{
-						cameraTrace.GameObject.Network.TakeOwnership();
-						cameraTrace.GameObject.Destroy();
-						PlayerInventory.AddItem( ItemStack.Create( pickupableObject.ItemId, 1 ) );
-						keepPickupProgress = false;
-					}
-				}
-			}
-			if ( cameraTrace.GameObject.Components.Get<Terrain>() != null)
-			{
+				//todo: fix flying
 				ItemStack stack = PlayerInventory.GetAt(SelectedSlot);
 				if ( stack != null )
 				{
@@ -172,6 +150,32 @@ public sealed class PlayerController : Component
 
 					keepPlacing = true;
 				}
+			} else
+			{
+				PickupableObject pickupableObject = cameraTrace.GameObject.Components.Get<PickupableObject>();
+				if ( Input.Pressed( "attack2" ) || (Input.Down( "attack2" ) && PickingUpObject != null) )
+				{
+					if ( pickupableObject != null )
+					{
+						if ( pickupableObject == PickingUpObject )
+						{
+							PickupProgress += Time.Delta;
+						}
+						else
+						{
+							PickupProgress = 0;
+							PickingUpObject = pickupableObject;
+						}
+						keepPickupProgress = true;
+						if ( PickupProgress >= pickupableObject.Time )
+						{
+							cameraTrace.GameObject.Network.TakeOwnership();
+							cameraTrace.GameObject.Destroy();
+							PlayerInventory.AddItem( ItemStack.Create( pickupableObject.ItemId, 1 ) );
+							keepPickupProgress = false;
+						}
+					}
+				}
 			}
 		}
 		TargettingOpenableInventory = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<OpenableInventory>():null;
@@ -194,23 +198,30 @@ public sealed class PlayerController : Component
 			float damage = 10;
 			if ( stack != null )
 			{
-				AttackCooldown = stack.ItemType.UseTime;
 				tool = stack.ItemType.ToolType;
+				AttackCooldown = stack.ItemType.UseTime;
 				damage = stack.ItemType.Damage;
 			}
-			MaxAttackCooldown = AttackCooldown;
 			if ( cameraTrace.Hit )
 			{
 				if(cameraTrace.Surface != null )
 				{
 					Sound.Play( cameraTrace.Surface.Sounds.ImpactHard, cameraTrace.EndPosition );
 				}
+				Terrain terrainHit = cameraTrace.GameObject.Components.Get<Terrain>();
 				if ( TargetedHealth != null )
 				{
 
 					TargetedHealth.Damage( damage, tool, PlayerInventory );
+				} else if (terrainHit != null && tool == ToolType.Shovel)
+				{
+					AttackCooldown *= 4;
+					PlayerInventory.AddItem( ItemStack.Create( "dirt_pile", 1 ) );
+					//terrainHit.Storage.HeightMap[0] = 100;
+					//terrainHit.SyncHeightMap();
 				}
 			}
+			MaxAttackCooldown = AttackCooldown;
 		}
 		if ( !keepPlacing )
 		{

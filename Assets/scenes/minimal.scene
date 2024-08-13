@@ -130,7 +130,9 @@
       "__guid": "719952b5-c952-433e-8f12-1ec8a549e228",
       "Flags": 0,
       "Name": "Terrain",
+      "Tags": "placable",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.Terrain",
@@ -307,6 +309,117 @@
               },
               "UseTime": 1,
               "Damage": 10
+            },
+            "log": {
+              "Id": "log",
+              "DisplayName": "Log",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "log.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "rope": {
+              "Id": "rope",
+              "DisplayName": "Rope",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "rope.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "grass_fiber": {
+              "Id": "grass_fiber",
+              "DisplayName": "Grass Fiber",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "grass_fiber.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "sharp_rock": {
+              "Id": "sharp_rock",
+              "DisplayName": "Sharpened Rock",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "sharp_rock.prefab"
+              },
+              "ToolType": "Knife",
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "rock_copper": {
+              "Id": "rock_copper",
+              "DisplayName": "Copper Ore",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "rock_copper.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "dirt_pile": {
+              "Id": "dirt_pile",
+              "DisplayName": "Dirt Pile",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "dirt_pile.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "mud_brick": {
+              "Id": "mud_brick",
+              "DisplayName": "Mud Brick",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "mud_brick.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "brick": {
+              "Id": "brick",
+              "DisplayName": "Brick",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "brick.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "bloomery": {
+              "Id": "bloomery",
+              "DisplayName": "Bloomery",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "bloomery.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "copper_ingot": {
+              "Id": "copper_ingot",
+              "DisplayName": "Copper Ingot",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "copper_ingot.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
             }
           }
         }
@@ -344,68 +457,118 @@
               ],
               "ProcessingTime": 1
             },
-            "camp_stick": {
-              "RecipeType": "campfire",
+            "sticks_log": {
+              "RecipeType": "crafting",
               "Inputs": [
                 {
+                  "Id": "log",
+                  "Count": 1,
+                  "Consume": true
+                },
+                {
+                  "Id": "hatchet",
+                  "Count": 1
+                }
+              ],
+              "Outputs": [
+                {
                   "Id": "stick",
+                  "Count": 4
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "rope": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "grass_fiber",
                   "Count": 1,
                   "Consume": true
                 }
               ],
               "Outputs": [
                 {
+                  "Id": "rope",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "sharp_rock": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
                   "Id": "rock",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "sharp_rock",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "mud_brick": {
+              "RecipeType": "crafting",
+              "Inputs": [],
+              "Outputs": [],
+              "ProcessingTime": 1
+            },
+            "fire_brick": {
+              "RecipeType": "campfire",
+              "Inputs": [
+                {
+                  "Id": "mud_brick",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "brick",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 10
+            },
+            "copper_smelt": {
+              "RecipeType": "bloomery",
+              "Inputs": [
+                {
+                  "Id": "rock_copper",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "copper_ingot",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "bloomery": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "brick",
+                  "Count": 8,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "bloomery",
                   "Count": 1
                 }
               ],
               "ProcessingTime": 1
             }
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "17e25f33-588d-4498-89f7-ace5f3aba7ee",
-      "Flags": 0,
-      "Name": "tree",
-      "Position": "142.1815,548.4412,11.36021",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "d21522ab-5a4a-4158-8bfd-c5f69b6a2803",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/pine_tree.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "233f5ee7-c0c0-4991-8f55-4d6a2fec8336",
-          "Center": "0,0,105.4994",
-          "IsTrigger": false,
-          "Scale": "50,50,220.9006",
-          "Static": false,
-          "Surface": "surfaces/wood.surface"
-        },
-        {
-          "__type": "HealthComponent",
-          "__guid": "cd452b13-8762-4f3c-9a59-0025514bd04e",
-          "Health": 100,
-          "Lives": 3,
-          "LootItems": [
-            {
-              "Id": "stick",
-              "Count": 1
-            }
-          ],
-          "MaxHealth": 100,
-          "Regeneration": 5,
-          "RegenerationTime": 10,
-          "ToolDamageModifiers": {
-            "Axe": 1
           }
         }
       ]
@@ -427,8 +590,10 @@
       "__guid": "7f2066ee-0442-484c-960a-22d92f3862d0",
       "Flags": 0,
       "Name": "reindeer",
-      "Position": "445.2701,1000.251,14.39853",
+      "Position": "445.2693,1000.251,0.860076",
       "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "npc",
+      "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
       "Components": [
@@ -447,21 +612,10 @@
           "__guid": "caecf786-516a-4871-95a2-bda2a14d63ed",
           "Agent": {
             "_type": "component",
-            "component_id": "b06544cb-6f0f-4074-b5a6-b91dfd5fc920",
+            "component_id": "fede8572-5d12-479c-b8dc-4870bc28d007",
             "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
             "component_type": "NavMeshAgent"
           }
-        },
-        {
-          "__type": "Sandbox.NavMeshAgent",
-          "__guid": "b06544cb-6f0f-4074-b5a6-b91dfd5fc920",
-          "Acceleration": 50,
-          "Height": 72.8,
-          "MaxSpeed": 120,
-          "Radius": 19.600004,
-          "Separation": 0.25,
-          "UpdatePosition": true,
-          "UpdateRotation": false
         },
         {
           "__type": "HealthComponent",
@@ -473,7 +627,11 @@
           "Regeneration": 1,
           "RegenerationTime": 60,
           "ToolDamageModifiers": {
-            "Knife": 1
+            "Knife": 1,
+            "None": 1,
+            "Axe": 1,
+            "Pickaxe": 1,
+            "Shovel": 1
           }
         },
         {
@@ -490,8 +648,160 @@
             "component_type": "SkinnedModelRenderer"
           },
           "RigidbodyFlags": 0
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "8232dd89-fd2e-484d-bca6-7f8a2e53e06a",
+          "Center": "0,0,42.89999",
+          "IsTrigger": false,
+          "Scale": "82.2999,39.00002,86.09995",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.NavMeshAgent",
+          "__guid": "fede8572-5d12-479c-b8dc-4870bc28d007",
+          "Acceleration": 50,
+          "Height": 64,
+          "MaxSpeed": 120,
+          "Radius": 16,
+          "Separation": 0.25,
+          "UpdatePosition": true,
+          "UpdateRotation": false
         }
       ]
+    },
+    {
+      "__guid": "d9facd81-124e-48ca-90cf-6372b362edaf",
+      "Flags": 0,
+      "Name": "tree",
+      "Position": "132.3328,347.4515,19.46557",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d7fc89b6-e57a-49c3-b3a1-1896f9908958",
+      "Flags": 0,
+      "Name": "grass",
+      "Position": "264.226,76.17027,3.487641",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "fe036897-d75c-42b3-b30b-71d95b07901e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/sbox_props/nature/tallgrass/tallgrass_b.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "29f92834-b26c-497e-bfe5-aae24959b6e7",
+          "Center": "0,0,28.4",
+          "IsTrigger": false,
+          "Scale": "23.30001,23.80003,68.09998",
+          "Static": false
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "f212db4e-7a7d-479d-8c5e-22daaa651845",
+          "Health": 30,
+          "Lives": 1,
+          "LootItems": [
+            {
+              "Id": "grass_fiber",
+              "Count": 1
+            }
+          ],
+          "MaxHealth": 30,
+          "Regeneration": 0,
+          "RegenerationTime": 10,
+          "ToolDamageModifiers": {
+            "Knife": 1
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "7f4378a7-e914-4412-b889-1f939f43feda",
+      "Flags": 0,
+      "Name": "Plane",
+      "Scale": "100,100,1",
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "5f1e1a0b-0dca-460d-ae1b-3265454d381c",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "d1ddc0f9-b2e5-406c-b0c9-adb1016263c2",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "b0f096c3-a04e-4948-97f9-21eaba7df779",
+      "Flags": 0,
+      "Name": "rock_copper",
+      "Position": "262.1171,237.3385,-0.00002901038",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "80a918a0-9e6d-42a4-8db5-8438eb507e37",
+      "Flags": 0,
+      "Name": "mud_brick",
+      "Position": "172.656,74.03613,-0.000007629395",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "mud_brick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2372a1c9-a890-48e1-94f5-07bc40a6b450",
+      "Flags": 0,
+      "Name": "bloomery",
+      "Position": "348.9351,135.171,-1.793056",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "bloomery.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "594d1d42-8ab6-49a9-84ff-43231c1c593a",
+      "Flags": 0,
+      "Name": "copper_ingot",
+      "Position": "321.1573,191.3233,-0.00004577637",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "copper_ingot.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
@@ -511,7 +821,7 @@
       "AgentRadius": 16,
       "AgentStepSize": 21,
       "AgentMaxSlope": 45,
-      "ExcludedBodies": "",
+      "ExcludedBodies": "npc",
       "IncludedBodies": ""
     }
   },
@@ -519,8 +829,8 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "fish.reindeer",
-    "luke.dnd_pine_tree"
+    "facepunch.tallgrass_b",
+    "fish.reindeer"
   ],
   "__version": 1
 }

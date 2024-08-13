@@ -1,0 +1,64 @@
+{
+  "RootObject": {
+    "__guid": "69d82297-450a-44a0-acb9-9afb67a01467",
+    "Flags": 0,
+    "Name": "sharp_rock",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "32ba7248-dc5e-4ae9-a64a-a5b5f0d785bc",
+        "Center": "0,0,2.8",
+        "IsTrigger": false,
+        "Scale": "12.19996,12.19999,5.799967",
+        "Static": false,
+        "Surface": "surfaces/slippy_wheels.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "97d07493-94d9-4dc2-9b0b-c114ca2aab24",
+        "ItemId": "sharp_rock",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d495ab4c-c135-4915-8d93-bd8fb5d657bf",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "3.625412,12.28335,7.179696",
+        "Rotation": "0.445941,-0.7641742,0.2629279,-0.3847644",
+        "Enabled": true
+      },
+      {
+        "__guid": "d95de81f-349c-474b-84b5-0fc5cc2d9c97",
+        "Flags": 0,
+        "Name": "model",
+        "Scale": "0.2,0.2,0.2",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "45618b44-553a-4bc2-9b0a-f1825073eb6d",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/rock_moss_set_02/rock_moss_02d.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "polyhaven.rock_moss_02d"
+  ],
+  "__version": 1
+}
