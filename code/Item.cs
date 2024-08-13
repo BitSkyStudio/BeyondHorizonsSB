@@ -161,6 +161,8 @@ namespace Sandbox
 		Axe,
 		Pickaxe,
 		Knife,
-		Shovel
+		Shovel,
+		Food,
+		Fuel
 	}
 }

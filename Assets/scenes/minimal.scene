@@ -238,18 +238,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
-      "Flags": 0,
-      "Name": "stick",
-      "Position": "181.8741,131.067,1.888638",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "NetworkOrphaned": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "stick.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "2d9ede07-3484-43d6-9f15-e3e1cb1fa995",
       "Flags": 0,
       "Name": "GameObject",
@@ -284,6 +272,7 @@
                 "_type": "gameobject",
                 "prefab": "stick.prefab"
               },
+              "ToolType": "Fuel",
               "UseTime": 1,
               "Damage": 10
             },
@@ -318,8 +307,9 @@
                 "_type": "gameobject",
                 "prefab": "log.prefab"
               },
+              "ToolType": "Fuel",
               "UseTime": 1,
-              "Damage": 10
+              "Damage": 50
             },
             "rope": {
               "Id": "rope",
@@ -418,6 +408,40 @@
                 "_type": "gameobject",
                 "prefab": "copper_ingot.prefab"
               },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "wooden_wall": {
+              "Id": "wooden_wall",
+              "DisplayName": "Wooden Wall",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "wooden_wall.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "raw_meat": {
+              "Id": "raw_meat",
+              "DisplayName": "Raw Meat",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "raw_meat.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "cooked_meat": {
+              "Id": "cooked_meat",
+              "DisplayName": "Cooked Meat",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "cooked_meat.prefab"
+              },
+              "ToolType": "Food",
               "UseTime": 1,
               "Damage": 10
             }
@@ -568,6 +592,45 @@
                 }
               ],
               "ProcessingTime": 1
+            },
+            "wooden_wall": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "log",
+                  "Count": 2,
+                  "Consume": true
+                },
+                {
+                  "Id": "stick",
+                  "Count": 4,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "wooden_wall",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "cook_meat": {
+              "RecipeType": "campfire",
+              "Inputs": [
+                {
+                  "Id": "raw_meat",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "cooked_meat",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
             }
           }
         }
@@ -622,7 +685,12 @@
           "__guid": "4a1ea19d-2b33-4769-b675-49ea8ad7777b",
           "Health": 100,
           "Lives": 1,
-          "LootItems": [],
+          "LootItems": [
+            {
+              "Id": "raw_meat",
+              "Count": 5
+            }
+          ],
           "MaxHealth": 100,
           "Regeneration": 1,
           "RegenerationTime": 60,
@@ -801,6 +869,54 @@
       "NetworkOrphaned": 1,
       "OwnerTransfer": 0,
       "__Prefab": "copper_ingot.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "41b1c988-7235-4c21-9d32-2be5700440ce",
+      "Flags": 0,
+      "Name": "rock_copper_generator",
+      "Position": "469.1671,1225.102,0.9998091",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_copper_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "8b45ede9-1001-4585-8632-c4eb522de3dd",
+      "Flags": 0,
+      "Name": "rock_generator",
+      "Position": "131.0791,806.8924,-0.0001373291",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f459cb8e-4a55-4a71-a8b0-c3d2e47646b5",
+      "Flags": 0,
+      "Name": "wooden_wall",
+      "Position": "120.564,55.69559,4.999984",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "wooden_wall.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "e1321031-9a9b-49bb-ae48-cda20d1d98e6",
+      "Flags": 0,
+      "Name": "raw_meat",
+      "Position": "181.3797,182.0646,-0.00003051758",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "raw_meat.prefab",
       "__PrefabVariables": {}
     }
   ],

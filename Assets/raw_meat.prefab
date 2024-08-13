@@ -1,0 +1,64 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "raw_meat",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "-0.09999999,0.4,1.39",
+        "IsTrigger": false,
+        "Scale": "8.299972,12.90004,2.000028",
+        "Static": false,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "raw_meat",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-0.007905155,-0.5117931,16.22744",
+        "Rotation": "0,0.7083376,0,0.7058738",
+        "Enabled": true
+      },
+      {
+        "__guid": "bb186fc0-574f-429d-a02a-a8d789b2813c",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,0,1.141251",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "8655a305-8336-4a9d-9cdd-9757a5f4635e",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/meat/meat.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "fish.meat"
+  ],
+  "__version": 1
+}

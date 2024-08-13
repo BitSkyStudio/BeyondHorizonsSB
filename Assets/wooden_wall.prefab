@@ -1,0 +1,66 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "wooden_wall",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "-3.1,0,72.69997",
+        "IsTrigger": false,
+        "Scale": "21.39999,161.7008,133.3989",
+        "Static": false,
+        "Surface": "surfaces/brick.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "wooden_wall",
+        "Time": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-170.3114,0,123.3194",
+        "Rotation": "0,0.1305262,0,0.991445",
+        "Enabled": true
+      },
+      {
+        "__guid": "28c82b46-4ab2-4df5-9dc4-289580312445",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,81.55243,6.460596",
+        "Rotation": "0.7071067,0,0,0.7071068",
+        "Scale": "3,3,3",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "272eb2ce-970b-478a-879e-7a0e3c37ede7",
+            "BodyGroups": 18446744073709551615,
+            "Model": "12884_08263bc3out.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "marauders.12884_08263bc3out"
+  ],
+  "__version": 1
+}

@@ -1,0 +1,66 @@
+{
+  "RootObject": {
+    "__guid": "bbfea1b8-8684-4d92-a6b2-6815edc05348",
+    "Flags": 0,
+    "Name": "rock_copper_generator",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "HealthComponent",
+        "__guid": "916e9009-bfcd-45af-a8d4-2220a52f2ef6",
+        "Health": 100,
+        "Lives": 20,
+        "LootItems": [
+          {
+            "Id": "rock_copper",
+            "Count": 1
+          }
+        ],
+        "MaxHealth": 100,
+        "Regeneration": 0,
+        "RegenerationTime": 10,
+        "ToolDamageModifiers": {
+          "Pickaxe": 1
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "2ee8479e-32c6-441a-b471-6c552462a71e",
+        "Flags": 0,
+        "Name": "body",
+        "Position": "0,0,16.99528",
+        "Scale": "0.2,0.2,0.2",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "eed5bab2-c61e-4765-a0d3-3b2bcfc16376",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "terrain/rock_copper.vmat",
+            "Model": "models/rust_nature/rocks/rock_cliff_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "a76c430a-9276-47db-a3ed-8091af9c50c3",
+            "IsTrigger": false,
+            "Model": "models/rust_nature/rocks/rock_cliff_a.vmdl",
+            "Static": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "rust.rock_cliff_a"
+  ],
+  "__version": 1
+}

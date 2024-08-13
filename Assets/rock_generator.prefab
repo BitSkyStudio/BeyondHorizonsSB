@@ -1,0 +1,66 @@
+{
+  "RootObject": {
+    "__guid": "bbfea1b8-8684-4d92-a6b2-6815edc05348",
+    "Flags": 0,
+    "Name": "rock_generator",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "HealthComponent",
+        "__guid": "d37bc0af-59d0-4a33-af34-5feca4e9d2e0",
+        "Health": 100,
+        "Lives": 20,
+        "LootItems": [
+          {
+            "Id": "rock",
+            "Count": 1
+          }
+        ],
+        "MaxHealth": 100,
+        "Regeneration": 0,
+        "RegenerationTime": 10,
+        "ToolDamageModifiers": {
+          "Pickaxe": 1
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "3bc5e965-7a72-41b6-ae16-00f167cd6f78",
+        "Flags": 0,
+        "Name": "body",
+        "Position": "0,0,15.94311",
+        "Scale": "0.2,0.2,0.2",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "1f2ec6be-eacc-4ac5-a148-9db1436ea3de",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "terrain/rock.vmat",
+            "Model": "models/rust_nature/rocks/rock_cliff_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "2267a94f-0e03-4a61-8e55-4e6ff76379cf",
+            "IsTrigger": false,
+            "Model": "models/rust_nature/rocks/rock_cliff_a.vmdl",
+            "Static": false
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "rust.rock_cliff_a"
+  ],
+  "__version": 1
+}

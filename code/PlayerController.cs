@@ -180,7 +180,7 @@ public sealed class PlayerController : Component
 		}
 		TargettingOpenableInventory = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<OpenableInventory>():null;
 
-		TargetedHealth = cameraTrace.Hit?cameraTrace.GameObject.Components.Get<HealthComponent>():null;
+		TargetedHealth = cameraTrace.Hit?cameraTrace.GameObject.Components.GetAll<HealthComponent>(FindMode.EverythingInSelfAndAncestors).FirstOrDefault():null;
 
 		AttackCooldown -= Time.Delta;
 		if(AttackCooldown < 0 )
