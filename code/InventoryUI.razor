@@ -19,6 +19,10 @@
 		{
 			<p>Progress: @((Machine.ProcessingTimeTotal != 0)?((int)(100*(1-Machine.ProcessingTimeLeft / Machine.ProcessingTimeTotal)))+"%":"Not Working")</p>
 		}
+		@if (Burner != null)
+		{
+			<p>Fuel: @((Burner.Fuel != 0) ? ((int)(Burner.Fuel/Burner.FuelConsumptionRate)) + "s" : "No Fuel")</p>
+		}
 	</div>
 </root>
 
@@ -29,6 +33,7 @@
 
 	public InventoryComponent Inventory => Object?.Components?.Get<InventoryComponent>();
 	public MachineController Machine => Object?.Components?.Get<MachineController>();
+	public BurningPowerSource Burner => Object?.Components?.Get<BurningPowerSource>();
 	public OpenableInventory TargettingOpenableInventory => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner).TargettingOpenableInventory;
 
 	protected override void OnUpdate()

@@ -53,6 +53,13 @@
       {
         "__type": "OpenableInventory",
         "__guid": "e2af414b-e36a-46e3-92d4-8d20add788f7"
+      },
+      {
+        "__type": "BurningPowerSource",
+        "__guid": "32d85c17-3abe-4d6f-aee9-cfcfe78d0233",
+        "Fuel": 0,
+        "FuelConsumptionRate": 2,
+        "MaxFuel": 100
       }
     ],
     "Children": [

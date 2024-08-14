@@ -52,6 +52,16 @@ namespace Sandbox
 		{
 			return new ItemStack( ItemType, newCount );
 		}
+		public override string ToString()
+		{
+			if(Count == 1 )
+			{
+				return ItemType.DisplayName;
+			} else
+			{
+				return Count + " x " + ItemType.DisplayName;
+			}
+		}
 	}
 	public class Recipe
 	{
@@ -66,6 +76,15 @@ namespace Sandbox
 			Inputs = new List<RecipeInput>();
 			Outputs = new List<ItemStackRaw>();
 			ProcessingTime = 1;
+		}
+		public string DisplayString()
+		{
+			string outputString = "Craft " + String.Join( ", ", Outputs.AsEnumerable().Select( item => item.ToStack().ToString() ) ) + " with " + String.Join( ", ", Inputs.AsEnumerable().Where(item=>item.Consume).Select( item => item.ToStack().ToString() ) );
+			if(Inputs.Where( input => !input.Consume ).Count() > 0 )
+			{
+				outputString += " using " + String.Join( ", ", Inputs.AsEnumerable().Where( item => !item.Consume ).Select( item => item.ToStack().ToString() ) );
+			}
+			return outputString;
 		}
 		public bool CanCraft( InventoryComponent inventory )
 		{

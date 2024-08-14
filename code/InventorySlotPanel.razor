@@ -31,17 +31,30 @@
 	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
 	public InventoryUI inventoryUI => Game.ActiveScene.GetAllComponents<InventoryUI>().First();
 
-	public override void OnMouseWheel(Vector2 value){
-		if(inventoryUI.Inventory != null){
+	public override void Tick(){
+		base.Tick();
+		if (Inventory == null)
+			return;
+		var item = Inventory.GetAt(Id);
+		Tooltip = item != null ? item.ItemType.DisplayName : "";
+	}
+
+	public override void OnMouseWheel(Vector2 value)
+	{
+		if (inventoryUI.Inventory != null)
+		{
 			InventoryComponent otherInventory = player.PlayerInventory == Inventory ? inventoryUI.Inventory : player.PlayerInventory;
-			if(value.y < 0){
+			if (value.y < 0)
+			{
 				ItemStack item = Inventory.GetAt(Id)?.Clone(1);
 				if (item != null && Inventory.SlotSupports(Id, InventoryComponent.SlotType.Output, item) && otherInventory.CountFree(item, InventoryComponent.SlotType.Input) > 0)
 				{
 					Inventory.NetRemoveFromSlot(Id, 1);
 					otherInventory.NetAddItem(ItemStackRaw.FromStack(item), InventoryComponent.SlotType.Input);
 				}
-			} else {
+			}
+			else
+			{
 				ItemStack item = Inventory.GetAt(Id);
 				if (item != null && otherInventory.CountItems(item, InventoryComponent.SlotType.Output) > 0 && Inventory.SlotSupports(Id, InventoryComponent.SlotType.Input, item))
 				{
@@ -51,7 +64,8 @@
 				}
 			}
 		}
-	}	
+	}
+
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt

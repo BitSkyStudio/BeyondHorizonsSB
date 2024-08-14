@@ -17,12 +17,13 @@ CraftingUI {
 		background-color: lightgray;
 		border-radius: 8px;
 		padding: 8px;
+		flex-wrap: wrap;
 	}
 
 	.craftslot {
 		margin: 8px;
-		width: 96px;
-		height: 96px;
+		width: 29%;
+		height: 20%;
 		background-color: gray;
 		border-width: 8px;
 		border-radius: 8px;

@@ -68,6 +68,9 @@ public sealed class PlayerController : Component
 
 	public OpenableInventory TargettingOpenableInventory = null;
 
+	[Property]
+	public float Food = 100;
+
 	protected override void OnUpdate()
 	{
 		foreach ( SkinnedModelRenderer renderer in Components.GetAll<SkinnedModelRenderer>() ) {
@@ -202,7 +205,20 @@ public sealed class PlayerController : Component
 				AttackCooldown = stack.ItemType.UseTime;
 				damage = stack.ItemType.Damage;
 			}
-			if ( cameraTrace.Hit )
+			if(tool == ToolType.Food ) {
+				Food += damage;
+				stack.Count -= 1;
+				PlayerInventory.SetAt( SelectedSlot, stack );
+			} else if(tool == ToolType.Fuel )
+			{
+				BurningPowerSource burningPower = cameraTrace.GameObject.Components.Get<BurningPowerSource>();
+				if(burningPower != null )
+				{
+					burningPower.AddFuel( damage );
+					stack.Count -= 1;
+					PlayerInventory.SetAt( SelectedSlot, stack );
+				}
+			} else if ( cameraTrace.Hit )
 			{
 				if(cameraTrace.Surface != null )
 				{
@@ -235,7 +251,12 @@ public sealed class PlayerController : Component
 			PickupProgress = 0;
 			PickingUpObject = null;
 		}
-		
+		Food -= Time.Delta / 10;
+		if(Food <= 0 )
+		{
+			Food = 0;
+			Components.Get<HealthComponent>().Damage( 5 * Time.Delta, ToolType.None, null );
+		}
 	}
 	protected override void OnFixedUpdate()
 	{

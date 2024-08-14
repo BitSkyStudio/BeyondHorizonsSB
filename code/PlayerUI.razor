@@ -25,7 +25,10 @@
 	<div class="healthbar">
 		<div class="innerhealthbar" style="width: @(player.Health.Health/player.Health.MaxHealth*100)%"></div>
 	</div>
-	<div class="hotbar" style=@((Game.ActiveScene.GetAllComponents<InventoryUI>().First().Object != null)?"pointer-events: all;":"pointer-events: none;")>
+	<div class="foodbar">
+		<div class="innerfoodbar" style="width: @(player.Food)%"></div>
+	</div>
+	<div class="hotbar" style=@((Game.ActiveScene.GetAllComponents<InventoryUI>().First().Object != null || Game.ActiveScene.GetAllComponents<CraftingUI>().First().IsOpen)?"pointer-events: all;":"pointer-events: none;")>
 		@for (int i = 0; i < player.Slots; i++)
 		{
 			<InventorySlotPanel Inventory=@player.PlayerInventory Id=@i Active=@(player.SelectedSlot==i)></InventorySlotPanel>

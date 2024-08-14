@@ -6,7 +6,8 @@ public sealed class MachineController : Component
 	public InventoryComponent Inventory{ get; set; }
 	[Property]
 	public string RecipeType { get; set; }
-	
+
+
 	private Recipe CurrentRecipe;
 
 	[Sync]
@@ -17,6 +18,9 @@ public sealed class MachineController : Component
 	protected override void OnUpdate()
 	{
 		if ( IsProxy ) return;
+		IPowerSource powerSource = Components.Get<IPowerSource>();
+		if ( powerSource != null && !powerSource.IsPowered() )
+			return;
 		if(CurrentRecipe == null )
 		{
 			CurrentRecipe = Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType( RecipeType ).FirstOrDefault( recipe => recipe.CanCraft( Inventory ), null );
@@ -37,5 +41,9 @@ public sealed class MachineController : Component
 			CurrentRecipe.AddOutputs( Inventory );
 			CurrentRecipe = null;
 		}
+	}
+	public interface IPowerSource
+	{
+		bool IsPowered();
 	}
 }

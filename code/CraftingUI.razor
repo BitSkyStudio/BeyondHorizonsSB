@@ -7,7 +7,7 @@
 	<div class="craftmenu">
 		@foreach(Recipe recipe in Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType("crafting")){
 			var recipeCopy = recipe;
-			<div class="craftslot" onclick=@(e=>craft(recipeCopy)) style="border-color:@(recipeCopy.CanCraft(player.PlayerInventory)?"green":"red");">
+			<div Tooltip=@recipeCopy.DisplayString() class="craftslot" onclick=@(e=>craft(recipeCopy)) style="border-color:@(recipeCopy.CanCraft(player.PlayerInventory)?"green":"red");">
 				<ItemRenderPanel ItemId=@recipe.Outputs[0].Id></ItemRenderPanel>
 			</div>
 		}
@@ -19,6 +19,7 @@
 	public bool IsOpen {get;set;} = false;
 
 	public PlayerController player => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner);
+
 
 	public void craft(Recipe recipe){
 		if (player.AttackCooldown == 0)

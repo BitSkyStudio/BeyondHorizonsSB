@@ -47,10 +47,12 @@ public sealed class HealthComponent : Component
 			}
 			if ( Lives <= 0 )
 			{
-				if(Components.GetAll<PlayerController>().Count() > 0 )
+				PlayerController player = Components.Get<PlayerController>();
+				if (player != null)
 				{
 					Lives = 1;
 					Transform.Position = Game.ActiveScene.GetAllComponents<SpawnPoint>().First().Transform.Position;
+					player.Food = 100;
 				} else
 				{
 					GameObject.Destroy();

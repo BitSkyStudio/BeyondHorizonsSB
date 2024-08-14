@@ -443,7 +443,7 @@
               },
               "ToolType": "Food",
               "UseTime": 1,
-              "Damage": 10
+              "Damage": 50
             }
           }
         }
@@ -468,7 +468,7 @@
                   "Consume": true
                 },
                 {
-                  "Id": "rock",
+                  "Id": "sharp_rock",
                   "Count": 1,
                   "Consume": true
                 }
@@ -538,8 +538,24 @@
             },
             "mud_brick": {
               "RecipeType": "crafting",
-              "Inputs": [],
-              "Outputs": [],
+              "Inputs": [
+                {
+                  "Id": "dirt_pile",
+                  "Count": 1,
+                  "Consume": true
+                },
+                {
+                  "Id": "grass_fiber",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "mud_brick",
+                  "Count": 1
+                }
+              ],
               "ProcessingTime": 1
             },
             "fire_brick": {
@@ -891,32 +907,6 @@
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "rock_generator.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "f459cb8e-4a55-4a71-a8b0-c3d2e47646b5",
-      "Flags": 0,
-      "Name": "wooden_wall",
-      "Position": "120.564,55.69559,4.999984",
-      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "NetworkOrphaned": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "wooden_wall.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "e1321031-9a9b-49bb-ae48-cda20d1d98e6",
-      "Flags": 0,
-      "Name": "raw_meat",
-      "Position": "181.3797,182.0646,-0.00003051758",
-      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "NetworkOrphaned": 1,
-      "OwnerTransfer": 0,
-      "__Prefab": "raw_meat.prefab",
       "__PrefabVariables": {}
     }
   ],

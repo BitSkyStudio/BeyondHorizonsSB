@@ -56,6 +56,13 @@
         "RecipeType": "campfire"
       },
       {
+        "__type": "BurningPowerSource",
+        "__guid": "47cc1686-b824-4731-9848-6bebc0dd491c",
+        "Fuel": 0,
+        "FuelConsumptionRate": 1,
+        "MaxFuel": 100
+      },
+      {
         "__type": "OpenableInventory",
         "__guid": "e2af414b-e36a-46e3-92d4-8d20add788f7"
       }
