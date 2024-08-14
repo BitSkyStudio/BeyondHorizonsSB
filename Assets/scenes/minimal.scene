@@ -444,6 +444,50 @@
               "ToolType": "Food",
               "UseTime": 1,
               "Damage": 50
+            },
+            "chest": {
+              "Id": "chest",
+              "DisplayName": "Chest",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "chest.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "tanning_rack": {
+              "Id": "tanning_rack",
+              "DisplayName": "Tanning Rack",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "tanning_rack.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "raw_hide": {
+              "Id": "raw_hide",
+              "DisplayName": "Raw Hide",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "raw_hide.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "leather": {
+              "Id": "leather",
+              "DisplayName": "Leather",
+              "StackSize": 20,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "leather.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
             }
           }
         }
@@ -647,6 +691,71 @@
                 }
               ],
               "ProcessingTime": 1
+            },
+            "chest": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "log",
+                  "Count": 4,
+                  "Consume": true
+                },
+                {
+                  "Id": "stick",
+                  "Count": 2,
+                  "Consume": true
+                },
+                {
+                  "Id": "hatchet",
+                  "Count": 1
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "chest",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "rack": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "stick",
+                  "Count": 4,
+                  "Consume": true
+                },
+                {
+                  "Id": "rope",
+                  "Count": 2,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "tanning_rack",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "leather": {
+              "RecipeType": "tanning_rack",
+              "Inputs": [
+                {
+                  "Id": "raw_hide",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "leather",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 10
             }
           }
         }
@@ -705,6 +814,10 @@
             {
               "Id": "raw_meat",
               "Count": 5
+            },
+            {
+              "Id": "raw_hide",
+              "Count": 2
             }
           ],
           "MaxHealth": 100,
@@ -907,6 +1020,45 @@
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "rock_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2a4f1b0e-7d5e-449e-81dc-a740200d2828",
+      "Flags": 0,
+      "Name": "chest",
+      "Position": "333.1438,57.92788,-0.00002288818",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "chest.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "fe5bd5d3-5d2a-492f-8f53-6fe3b69798b7",
+      "Flags": 0,
+      "Name": "tanning_rack",
+      "Position": "111.5718,472.7403,0.9998778",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "tanning_rack.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "9b282725-f818-4462-9ffa-92d3fdcbdcb5",
+      "Flags": 0,
+      "Name": "raw_hide",
+      "Position": "180.1199,144.8265,-0.00003814697",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "raw_hide.prefab",
       "__PrefabVariables": {}
     }
   ],

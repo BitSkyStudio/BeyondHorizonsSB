@@ -1,0 +1,117 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "chest",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "-1.000001,0.1999999,16.79995",
+        "IsTrigger": false,
+        "Scale": "27.29995,44.99998,29.7001",
+        "Static": false,
+        "Surface": "surfaces/brick.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "chest",
+        "Time": 1
+      },
+      {
+        "__type": "InventoryComponent",
+        "__guid": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
+        "Slots": {
+          "0": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "1": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "2": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "3": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "4": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "5": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "6": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "7": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "8": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          },
+          "9": {
+            "SlotType": "Input, Output",
+            "Filter": []
+          }
+        }
+      },
+      {
+        "__type": "OpenableInventory",
+        "__guid": "e2af414b-e36a-46e3-92d4-8d20add788f7"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-56.03887,-0.004099488,46.29849",
+        "Rotation": "0,0.258819,0,0.9659259",
+        "Enabled": true
+      },
+      {
+        "__guid": "ae58600f-96c3-472f-8340-15c06c07fdaf",
+        "Flags": 0,
+        "Name": "model",
+        "Position": "0,0,0.5983553",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "2be85cf3-c6c7-44ed-aa18-b5e77e3124e2",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "materials/wood/woodenplanks/woodenplanks.vmat",
+            "Model": "models/containers/chest/chest.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "baik.woodenplanks",
+    "fish.retro_chest"
+  ],
+  "__version": 1
+}

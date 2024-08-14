@@ -141,7 +141,9 @@ public sealed class PlayerController : Component
 						placingObject.Transform.Position = cameraTrace.EndPosition;
 						placingObject.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 						bool blocked = placingObject.Components.Get<BoxCollider>().Touching.Count() > 0;
-						placingObject.Components.GetAll<ModelRenderer>().First().Tint = blocked?Color.Red:Color.Green;
+						foreach(ModelRenderer modelRenderer in placingObject.Components.GetAll<ModelRenderer>() ){ 
+							modelRenderer.Tint = blocked ? Color.Red : Color.Green;
+						}
 						if ( Input.Pressed( "attack2" ) && !blocked )
 						{
 							var realObject = stack.ItemType.Prefab.Clone( cameraTrace.EndPosition, Rotation.FromYaw( EyeAngles.yaw ) );
