@@ -1,0 +1,102 @@
+{
+  "RootObject": {
+    "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+    "Flags": 0,
+    "Name": "copper_anvil",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "OwnerTransfer": 0,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "57ee0a2f-8422-4556-b9dc-835f308387f4",
+        "Center": "-0.1000005,-2.100001,9.299964",
+        "IsTrigger": false,
+        "Scale": "17.19992,36.80009,18.39987",
+        "Static": false,
+        "Surface": "surfaces/metal.surface"
+      },
+      {
+        "__type": "PickupableObject",
+        "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
+        "ItemId": "copper_anvil",
+        "Time": 1
+      },
+      {
+        "__type": "InventoryComponent",
+        "__guid": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
+        "Slots": {
+          "0": {
+            "SlotType": "Input, Output, MachineInput",
+            "Filter": [
+              "rock_copper"
+            ]
+          },
+          "1": {
+            "SlotType": "Output, MachineOutput",
+            "Filter": []
+          }
+        }
+      },
+      {
+        "__type": "OpenableInventory",
+        "__guid": "e2af414b-e36a-46e3-92d4-8d20add788f7"
+      },
+      {
+        "__type": "ForgingController",
+        "__guid": "c49913a4-6f5d-4c64-a073-9e3b8977d090",
+        "Inventory": {
+          "_type": "component",
+          "component_id": "2d375c2f-29dd-465a-aea5-8cd54ce1d60f",
+          "go": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
+          "component_type": "InventoryComponent"
+        },
+        "SelectedRecipe": {
+          "RecipeType": "crafting",
+          "Inputs": [],
+          "Outputs": [],
+          "ProcessingTime": 1
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "c016c257-5cb8-4a73-b5aa-85e16994e1d0",
+        "Flags": 0,
+        "Name": "invview",
+        "Position": "-35.94073,-0.004099488,28.99105",
+        "Rotation": "0,0.258819,0,0.9659259",
+        "Enabled": true
+      },
+      {
+        "__guid": "ae58600f-96c3-472f-8340-15c06c07fdaf",
+        "Flags": 0,
+        "Name": "model",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "2be85cf3-c6c7-44ed-aa18-b5e77e3124e2",
+            "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "materials/hotspots/roof_metal_panels_a1_copper_hs.vmat",
+            "Model": "anvil.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.roof_metal_panels_copper_hs",
+    "goodolepink.anvil"
+  ],
+  "__version": 1
+}

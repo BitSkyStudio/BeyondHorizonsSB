@@ -3,6 +3,7 @@ InventoryUI {
 	align-items: center;
 	font-weight: bold;
 	border-radius: 20px;
+	flex-wrap: wrap;
 
 	.prompt {
 		position: absolute;
@@ -44,5 +45,14 @@ InventoryUI {
 			> .hotbarcounter {
 			}
 		}
+	}
+
+	.craftslot {
+		margin: 8px;
+		width: 128px;
+		height: 128px;
+		background-color: gray;
+		border-width: 8px;
+		border-radius: 8px;
 	}
 }

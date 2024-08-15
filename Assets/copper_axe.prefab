@@ -2,7 +2,7 @@
   "RootObject": {
     "__guid": "f6efd3e8-bf16-4549-9de5-d45b5ace0d2c",
     "Flags": 0,
-    "Name": "hatchet",
+    "Name": "copper_axe",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkOrphaned": 1,
@@ -20,7 +20,7 @@
       {
         "__type": "PickupableObject",
         "__guid": "6ce3d3d3-8c63-4abf-89d5-d9c88a3ac187",
-        "ItemId": "hatchet",
+        "ItemId": "copper_axe",
         "Time": 1
       }
     ],
@@ -37,7 +37,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "2aaee19b-ec79-4620-bb43-eac3bdb462e0",
             "BodyGroups": 18446744073709551615,
-            "MaterialOverride": "terrain/rock.vmat",
+            "MaterialOverride": "materials/hotspots/roof_metal_panels_a1_copper_hs.vmat",
             "Model": "models/polyhaven/hatchet/hatchet_1k.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -51,26 +51,6 @@
         "Position": "4.077194,-1.315668,27.38819",
         "Rotation": "0.4754353,0.5234131,-0.5234131,0.4754353",
         "Enabled": true
-      },
-      {
-        "__guid": "ef8e2488-74b1-40e0-924f-fc24dd6c52b4",
-        "Flags": 0,
-        "Name": "model2",
-        "Position": "-13.68227,-3.412123,1.709742",
-        "Rotation": "0,0.7071068,0,0.7071068",
-        "Scale": "0.05,0.07378954,0.4234573",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "15554c0a-89f2-45ea-b5bb-98660674ca0f",
-            "BodyGroups": 18446744073709551615,
-            "MaterialOverride": "materials/mats/bark_1/bark_1.vmat",
-            "Model": "models/cylinder.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
       }
     ],
     "__variables": []
@@ -80,8 +60,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "chase.cylinder",
-    "thefirm.bark_1",
+    "facepunch.roof_metal_panels_copper_hs",
     "titanovsky.hatchet_1k"
   ],
   "__version": 1

@@ -197,7 +197,7 @@ public sealed class PlayerController : Component
 		{
 			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
 			Animator.Target.Set( "b_attack", true );
-			AttackCooldown = 0.5f;
+			AttackCooldown = 1f;
 			ItemStack stack = PlayerInventory.GetAt( SelectedSlot );
 			ToolType tool = ToolType.None;
 			float damage = 10;

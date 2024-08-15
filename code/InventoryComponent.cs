@@ -26,7 +26,7 @@ public sealed class InventoryComponent : Component
 		if ( item == null )
 			return null;
 		ItemStack itemsLeft = item.Clone();
-		for ( int i = 0; i < Items.Count; i++ )
+		for ( int i = 0; i < Size; i++ )
 		{
 			if ( !SlotSupports(i, mask, itemsLeft) )
 				continue;
@@ -54,7 +54,7 @@ public sealed class InventoryComponent : Component
 	public int CountItems( ItemStack item, SlotType mask = SlotType.Any )
 	{
 		int count = 0;
-		for ( int i = 0; i < Items.Count; i++ )
+		for ( int i = 0; i < Size; i++ )
 		{
 			if ( !SlotSupports( i, mask, null ) )
 				continue;
@@ -69,7 +69,7 @@ public sealed class InventoryComponent : Component
 	public int CountFree( ItemStack item, SlotType mask = SlotType.Any )
 	{
 		int count = 0;
-		for ( int i = 0; i < Items.Count; i++ )
+		for ( int i = 0; i < Size; i++ )
 		{
 			if ( !SlotSupports( i, mask, item ) )
 				continue;
@@ -107,8 +107,11 @@ public sealed class InventoryComponent : Component
 	}
 	public ItemStack GetAt( int index )
 	{
-		Items.TryAdd( index, null );
-		return Items[index]?.ToStack();
+		ItemStackRaw stack = null;
+		Items.TryGetValue( index, out stack );
+		return stack?.ToStack();
+		//Items.TryAdd( index, null );
+		//return Items[index]?.ToStack();
 	}
 	public ItemStack SetAt( int index, ItemStack item )
 	{

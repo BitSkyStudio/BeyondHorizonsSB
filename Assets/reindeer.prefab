@@ -1,0 +1,103 @@
+{
+  "RootObject": {
+    "__guid": "7f2066ee-0442-484c-960a-22d92f3862d0",
+    "Flags": 0,
+    "Name": "reindeer",
+    "Position": "445.2693,1000.251,0.860076",
+    "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+    "Tags": "npc",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkOrphaned": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "048cfc41-f01a-406f-8cda-e46c61f47921",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/fauna/elk/reindeer.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "AnimalController",
+        "__guid": "caecf786-516a-4871-95a2-bda2a14d63ed",
+        "Agent": {
+          "_type": "component",
+          "component_id": "fede8572-5d12-479c-b8dc-4870bc28d007",
+          "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
+          "component_type": "NavMeshAgent"
+        }
+      },
+      {
+        "__type": "HealthComponent",
+        "__guid": "4a1ea19d-2b33-4769-b675-49ea8ad7777b",
+        "Health": 100,
+        "Lives": 1,
+        "LootItems": [
+          {
+            "Id": "raw_meat",
+            "Count": 5
+          },
+          {
+            "Id": "raw_hide",
+            "Count": 2
+          }
+        ],
+        "MaxHealth": 100,
+        "Regeneration": 1,
+        "RegenerationTime": 60,
+        "ToolDamageModifiers": {
+          "Knife": 1,
+          "None": 1,
+          "Axe": 1,
+          "Pickaxe": 1,
+          "Shovel": 1
+        }
+      },
+      {
+        "__type": "Sandbox.ModelPhysics",
+        "__guid": "0a78a39e-98e6-4b9a-a1e2-d54420a69ccc",
+        "__enabled": false,
+        "Locking": {},
+        "Model": "models/fauna/elk/reindeer.vmdl",
+        "MotionEnabled": true,
+        "Renderer": {
+          "_type": "component",
+          "component_id": "048cfc41-f01a-406f-8cda-e46c61f47921",
+          "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "RigidbodyFlags": 0
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "8232dd89-fd2e-484d-bca6-7f8a2e53e06a",
+        "Center": "0,0,42.89999",
+        "IsTrigger": false,
+        "Scale": "82.2999,39.00002,86.09995",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.NavMeshAgent",
+        "__guid": "fede8572-5d12-479c-b8dc-4870bc28d007",
+        "Acceleration": 50,
+        "Height": 64,
+        "MaxSpeed": 120,
+        "Radius": 16,
+        "Separation": 0.25,
+        "UpdatePosition": true,
+        "UpdateRotation": false
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "fish.reindeer"
+  ],
+  "__version": 1
+}

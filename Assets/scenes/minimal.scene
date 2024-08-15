@@ -179,7 +179,7 @@
         },
         {
           "__type": "PlayerUI",
-          "__guid": "cf09b22a-bf3a-46f6-a791-bc8492cffb6f"
+          "__guid": "7f74b7e3-ffbc-4286-b0b2-7fd121bc5751"
         }
       ],
       "Children": [
@@ -199,7 +199,7 @@
             },
             {
               "__type": "CraftingUI",
-              "__guid": "a3b75caa-630f-4250-b90f-6832b873c67c"
+              "__guid": "2113aa65-e831-43de-acbf-8e63c3ba85ee"
             }
           ]
         },
@@ -219,7 +219,7 @@
             },
             {
               "__type": "InventoryUI",
-              "__guid": "9b1a0a00-971d-4ad6-9494-563ae7105feb"
+              "__guid": "84889218-5730-46c7-b5c7-d32eddec9c40"
             }
           ]
         }
@@ -488,6 +488,29 @@
               },
               "UseTime": 1,
               "Damage": 10
+            },
+            "copper_anvil": {
+              "Id": "copper_anvil",
+              "DisplayName": "Copper Anvil",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "copper_anvil.prefab"
+              },
+              "UseTime": 1,
+              "Damage": 10
+            },
+            "copper_axe": {
+              "Id": "Copper Axe",
+              "DisplayName": "Copper Axe",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "copper_axe.prefab"
+              },
+              "ToolType": "Axe",
+              "UseTime": 1.5,
+              "Damage": 50
             }
           }
         }
@@ -513,6 +536,11 @@
                 },
                 {
                   "Id": "sharp_rock",
+                  "Count": 1,
+                  "Consume": true
+                },
+                {
+                  "Id": "rope",
                   "Count": 1,
                   "Consume": true
                 }
@@ -756,6 +784,40 @@
                 }
               ],
               "ProcessingTime": 10
+            },
+            "campfire": {
+              "RecipeType": "crafting",
+              "Inputs": [
+                {
+                  "Id": "rock",
+                  "Count": 4,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "campfire",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 1
+            },
+            "copper_axe": {
+              "RecipeType": "smithing",
+              "Inputs": [
+                {
+                  "Id": "copper_ingot",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "copper_axe",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 45
             }
           }
         }
@@ -773,99 +835,6 @@
       "OwnerTransfer": 0,
       "__Prefab": "campfire.prefab",
       "__PrefabVariables": {}
-    },
-    {
-      "__guid": "7f2066ee-0442-484c-960a-22d92f3862d0",
-      "Flags": 0,
-      "Name": "reindeer",
-      "Position": "445.2693,1000.251,0.860076",
-      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
-      "Tags": "npc",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "NetworkOrphaned": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.SkinnedModelRenderer",
-          "__guid": "048cfc41-f01a-406f-8cda-e46c61f47921",
-          "BodyGroups": 18446744073709551615,
-          "CreateBoneObjects": false,
-          "Model": "models/fauna/elk/reindeer.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1",
-          "UseAnimGraph": true
-        },
-        {
-          "__type": "AnimalController",
-          "__guid": "caecf786-516a-4871-95a2-bda2a14d63ed",
-          "Agent": {
-            "_type": "component",
-            "component_id": "fede8572-5d12-479c-b8dc-4870bc28d007",
-            "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
-            "component_type": "NavMeshAgent"
-          }
-        },
-        {
-          "__type": "HealthComponent",
-          "__guid": "4a1ea19d-2b33-4769-b675-49ea8ad7777b",
-          "Health": 100,
-          "Lives": 1,
-          "LootItems": [
-            {
-              "Id": "raw_meat",
-              "Count": 5
-            },
-            {
-              "Id": "raw_hide",
-              "Count": 2
-            }
-          ],
-          "MaxHealth": 100,
-          "Regeneration": 1,
-          "RegenerationTime": 60,
-          "ToolDamageModifiers": {
-            "Knife": 1,
-            "None": 1,
-            "Axe": 1,
-            "Pickaxe": 1,
-            "Shovel": 1
-          }
-        },
-        {
-          "__type": "Sandbox.ModelPhysics",
-          "__guid": "0a78a39e-98e6-4b9a-a1e2-d54420a69ccc",
-          "__enabled": false,
-          "Locking": {},
-          "Model": "models/fauna/elk/reindeer.vmdl",
-          "MotionEnabled": true,
-          "Renderer": {
-            "_type": "component",
-            "component_id": "048cfc41-f01a-406f-8cda-e46c61f47921",
-            "go": "7f2066ee-0442-484c-960a-22d92f3862d0",
-            "component_type": "SkinnedModelRenderer"
-          },
-          "RigidbodyFlags": 0
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "8232dd89-fd2e-484d-bca6-7f8a2e53e06a",
-          "Center": "0,0,42.89999",
-          "IsTrigger": false,
-          "Scale": "82.2999,39.00002,86.09995",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.NavMeshAgent",
-          "__guid": "fede8572-5d12-479c-b8dc-4870bc28d007",
-          "Acceleration": 50,
-          "Height": 64,
-          "MaxSpeed": 120,
-          "Radius": 16,
-          "Separation": 0.25,
-          "UpdatePosition": true,
-          "UpdateRotation": false
-        }
-      ]
     },
     {
       "__guid": "d9facd81-124e-48ca-90cf-6372b362edaf",
@@ -907,7 +876,7 @@
         {
           "__type": "HealthComponent",
           "__guid": "f212db4e-7a7d-479d-8c5e-22daaa651845",
-          "Health": 30,
+          "Health": 100,
           "Lives": 1,
           "LootItems": [
             {
@@ -915,7 +884,7 @@
               "Count": 1
             }
           ],
-          "MaxHealth": 30,
+          "MaxHealth": 100,
           "Regeneration": 0,
           "RegenerationTime": 10,
           "ToolDamageModifiers": {
@@ -1060,6 +1029,38 @@
       "OwnerTransfer": 0,
       "__Prefab": "raw_hide.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "be36eb74-eb8b-4d3d-9669-79cde2274a72",
+      "Flags": 0,
+      "Name": "Animal Respawner",
+      "Position": "524.605,974.8449,4.588837",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameObjectRespawner",
+          "__guid": "69dff64f-fd82-45b7-b3a2-765730719400",
+          "Prefab": {
+            "_type": "gameobject",
+            "prefab": "reindeer.prefab"
+          },
+          "RespawnTime": 10
+        }
+      ]
+    },
+    {
+      "__guid": "255f9802-2c1b-4cd1-8537-37307ee5ef7b",
+      "Flags": 0,
+      "Name": "copper_anvil",
+      "Position": "249.6966,304.4843,-0.00004577637",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "copper_anvil.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
@@ -1087,8 +1088,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.tallgrass_b",
-    "fish.reindeer"
+    "facepunch.tallgrass_b"
   ],
   "__version": 1
 }
