@@ -29,9 +29,7 @@
         "Slots": {
           "0": {
             "SlotType": "Input, Output, MachineInput",
-            "Filter": [
-              "rock_copper"
-            ]
+            "Filter": []
           },
           "1": {
             "SlotType": "Output, MachineOutput",
@@ -53,6 +51,7 @@
           "component_type": "InventoryComponent"
         },
         "SelectedRecipe": {
+          "Id": "",
           "RecipeType": "crafting",
           "Inputs": [],
           "Outputs": [],

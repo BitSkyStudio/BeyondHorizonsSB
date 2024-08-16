@@ -52,7 +52,7 @@ namespace Sandbox
 		{
 			return new ItemStack( ItemType, newCount );
 		}
-		public override string ToString()
+		public string AsString()
 		{
 			if(Count == 1 )
 			{
@@ -65,6 +65,7 @@ namespace Sandbox
 	}
 	public class Recipe
 	{
+		public string Id { get; set; }
 		public string RecipeType {  get; set; }
 		public List<RecipeInput> Inputs {  get; set; }
 		public List<ItemStackRaw> Outputs {  get; set; }
@@ -72,6 +73,7 @@ namespace Sandbox
 		
 		public Recipe()
 		{
+			Id = "";
 			RecipeType = "crafting";
 			Inputs = new List<RecipeInput>();
 			Outputs = new List<ItemStackRaw>();
@@ -79,10 +81,10 @@ namespace Sandbox
 		}
 		public string DisplayString()
 		{
-			string outputString = "Craft " + String.Join( ", ", Outputs.AsEnumerable().Select( item => item.ToStack().ToString() ) ) + " with " + String.Join( ", ", Inputs.AsEnumerable().Where(item=>item.Consume).Select( item => item.ToStack().ToString() ) );
+			string outputString = "Craft " + String.Join( ", ", Outputs.AsEnumerable().Select( item => item.ToStack().AsString() ) ) + " with " + String.Join( ", ", Inputs.AsEnumerable().Where(item=>item.Consume).Select( item => item.ToStack().AsString() ) );
 			if(Inputs.Where( input => !input.Consume ).Count() > 0 )
 			{
-				outputString += " using " + String.Join( ", ", Inputs.AsEnumerable().Where( item => !item.Consume ).Select( item => item.ToStack().ToString() ) );
+				outputString += " using " + String.Join( ", ", Inputs.AsEnumerable().Where( item => !item.Consume ).Select( item => item.ToStack().AsString() ) );
 			}
 			return outputString;
 		}

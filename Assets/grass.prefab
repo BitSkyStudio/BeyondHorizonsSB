@@ -1,0 +1,56 @@
+{
+  "RootObject": {
+    "__guid": "d7fc89b6-e57a-49c3-b3a1-1896f9908958",
+    "Flags": 0,
+    "Name": "grass",
+    "Position": "264.226,76.17027,3.487641",
+    "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+    "Tags": "grass",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "fe036897-d75c-42b3-b30b-71d95b07901e",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/sbox_props/nature/tallgrass/tallgrass_b.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "29f92834-b26c-497e-bfe5-aae24959b6e7",
+        "Center": "0,0,28.4",
+        "IsTrigger": false,
+        "Scale": "23.30001,23.80003,68.09998",
+        "Static": false
+      },
+      {
+        "__type": "HealthComponent",
+        "__guid": "f212db4e-7a7d-479d-8c5e-22daaa651845",
+        "Health": 100,
+        "Lives": 1,
+        "LootItems": [
+          {
+            "Id": "grass_fiber",
+            "Count": 1
+          }
+        ],
+        "MaxHealth": 100,
+        "Regeneration": 0,
+        "RegenerationTime": 10,
+        "ToolDamageModifiers": {
+          "Knife": 1
+        }
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.tallgrass_b"
+  ],
+  "__version": 1
+}

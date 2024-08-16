@@ -55,4 +55,25 @@ InventoryUI {
 		border-width: 8px;
 		border-radius: 8px;
 	}
+
+	.forgestep {
+		width: 64px;
+		height: 64px;
+	}
+
+	.forging_meter {
+		width: 200px;
+		height: 20px;
+		background-color: black;
+	}
+
+	.forging_marker_p {
+		width: 1px;
+		background-color: red;
+	}
+
+	.forging_marker_c {
+		width: 1px;
+		background-color: green;
+	}
 }

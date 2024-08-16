@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 public sealed class InventoryComponent : Component
 {
 	[Sync]
+	[Property]
 	public NetDictionary<int,ItemStackRaw> Items {  get; set; }
 
 	public int Size => Slots.Count;

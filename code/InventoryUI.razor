@@ -1,5 +1,6 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using System;
 @inherits PanelComponent
 
 <root>
@@ -26,8 +27,8 @@
 		@if(ForgingController != null){
 			@foreach (Recipe recipe in Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().ofType("smithing")){
 				var recipeCopy = recipe;
-				<div Tooltip=@recipeCopy.DisplayString() class="craftslot" style="border-color:@(recipeCopy.CanCraft(Inventory)?"green":"red");">
-					<ItemRenderPanel ItemId=@recipeCopy.Outputs[0].Id></ItemRenderPanel>
+				<div Tooltip=@recipeCopy.DisplayString() class="craftslot" style="border-color:@(ForgingController.SelectedRecipeId==recipeCopy.Id?"yellow":(recipeCopy.CanCraft(Inventory)?"green":"red"));">
+					<ItemRenderPanel ItemId=@recipeCopy.Outputs[0].Id onclick=@(e=>SelectRecipe(recipeCopy.Id))></ItemRenderPanel>
 				</div>
 			}
 			<img class="forgestep" src="forge/hit_light.png" Tooltip="Light Hit" onclick=@(e=>ForgeStep(ForgingController.ForgingStep.HitLight)) />
@@ -38,6 +39,21 @@
 			<img class="forgestep" src="forge/bend.png" Tooltip="Bend" onclick=@(e=>ForgeStep(ForgingController.ForgingStep.Bend)) />
 			<img class="forgestep" src="forge/upset.png" Tooltip="Upset" onclick=@(e=>ForgeStep(ForgingController.ForgingStep.Upset)) />
 			<img class="forgestep" src="forge/shrink.png" Tooltip="Shrink" onclick=@(e=>ForgeStep(ForgingController.ForgingStep.Shrink)) />
+			<div class="forging_meter">
+			@if (ForgingController.SelectedRecipeId != "")
+			{
+					int pOffset = (int)Game.ActiveScene.GetAllComponents<RecipeRegistry>().First().Recipes[ForgingController.SelectedRecipeId].ProcessingTime;
+					int cOffset = ForgingController.Progress;
+					if (pOffset < cOffset)
+					{
+						<div class="forging_marker_p" style="margin-left: @(pOffset*2)px"></div>
+						<div class="forging_marker_c" style="margin-left: @((cOffset-pOffset) * 2)px"></div>
+					} else {
+						<div class="forging_marker_c" style="margin-left: @(cOffset * 2)px"></div>
+						<div class="forging_marker_p" style="margin-left: @((pOffset-cOffset)*2)px"></div>
+					}
+				}
+			</div>
 		}
 	</div>
 </root>
@@ -54,7 +70,10 @@
 	public OpenableInventory TargettingOpenableInventory => Game.ActiveScene.GetAllComponents<PlayerController>().First(x => x.Network.IsOwner).TargettingOpenableInventory;
 
 	public void ForgeStep(ForgingController.ForgingStep step){
-		Log.Info(ForgingController.GetStepOffset(step));
+		ForgingController.ForgeStep(step);
+	}
+	public void SelectRecipe(string recipe){
+		ForgingController.SelectRecipe(recipe);
 	}
 
 	protected override void OnUpdate()

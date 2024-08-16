@@ -1,5 +1,5 @@
 {
-  "__guid": "8af41f0c-78f1-40a4-b16e-ce14421ef070",
+  "__guid": "1136fafa-a364-48d1-8dab-cdd26bb4358e",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -116,7 +116,7 @@
       "__guid": "d359be9d-a365-4717-8447-59c47131ee0a",
       "Flags": 0,
       "Name": "SpawnPoint",
-      "Position": "129.4634,253.0418,1.059231",
+      "Position": "9348.525,9658.88,1.059231",
       "Enabled": true,
       "Components": [
         {
@@ -501,7 +501,7 @@
               "Damage": 10
             },
             "copper_axe": {
-              "Id": "Copper Axe",
+              "Id": "copper_axe",
               "DisplayName": "Copper Axe",
               "StackSize": 1,
               "Prefab": {
@@ -510,6 +510,18 @@
               },
               "ToolType": "Axe",
               "UseTime": 1.5,
+              "Damage": 50
+            },
+            "copper_pickaxe": {
+              "Id": "copper_pickaxe",
+              "DisplayName": "Copper Pickaxe",
+              "StackSize": 1,
+              "Prefab": {
+                "_type": "gameobject",
+                "prefab": "copper_pickaxe.prefab"
+              },
+              "ToolType": "Pickaxe",
+              "UseTime": 2,
               "Damage": 50
             }
           }
@@ -525,8 +537,9 @@
         {
           "__type": "RecipeRegistry",
           "__guid": "68980c1d-1d2f-45af-8820-e9dd7acf1c18",
-          "recipes": {
+          "Recipes": {
             "hatchet": {
+              "Id": "hatchet",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -554,6 +567,7 @@
               "ProcessingTime": 1
             },
             "sticks_log": {
+              "Id": "sticks_log",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -575,6 +589,7 @@
               "ProcessingTime": 1
             },
             "rope": {
+              "Id": "rope",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -592,6 +607,7 @@
               "ProcessingTime": 1
             },
             "sharp_rock": {
+              "Id": "sharp_rock",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -609,6 +625,7 @@
               "ProcessingTime": 1
             },
             "mud_brick": {
+              "Id": "mud_brick",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -631,6 +648,7 @@
               "ProcessingTime": 1
             },
             "fire_brick": {
+              "Id": "fire_brick",
               "RecipeType": "campfire",
               "Inputs": [
                 {
@@ -648,6 +666,7 @@
               "ProcessingTime": 10
             },
             "copper_smelt": {
+              "Id": "copper_smelt",
               "RecipeType": "bloomery",
               "Inputs": [
                 {
@@ -665,6 +684,7 @@
               "ProcessingTime": 1
             },
             "bloomery": {
+              "Id": "bloomery",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -682,6 +702,7 @@
               "ProcessingTime": 1
             },
             "wooden_wall": {
+              "Id": "wooden_wall",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -704,6 +725,7 @@
               "ProcessingTime": 1
             },
             "cook_meat": {
+              "Id": "cook_meat",
               "RecipeType": "campfire",
               "Inputs": [
                 {
@@ -721,6 +743,7 @@
               "ProcessingTime": 1
             },
             "chest": {
+              "Id": "chest",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -747,6 +770,7 @@
               "ProcessingTime": 1
             },
             "rack": {
+              "Id": "rack",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -769,6 +793,7 @@
               "ProcessingTime": 1
             },
             "leather": {
+              "Id": "leather",
               "RecipeType": "tanning_rack",
               "Inputs": [
                 {
@@ -786,6 +811,7 @@
               "ProcessingTime": 10
             },
             "campfire": {
+              "Id": "campfire",
               "RecipeType": "crafting",
               "Inputs": [
                 {
@@ -803,6 +829,7 @@
               "ProcessingTime": 1
             },
             "copper_axe": {
+              "Id": "copper_axe",
               "RecipeType": "smithing",
               "Inputs": [
                 {
@@ -818,6 +845,24 @@
                 }
               ],
               "ProcessingTime": 45
+            },
+            "copper_pickaxe": {
+              "Id": "copper_pickaxe",
+              "RecipeType": "smithing",
+              "Inputs": [
+                {
+                  "Id": "copper_ingot",
+                  "Count": 1,
+                  "Consume": true
+                }
+              ],
+              "Outputs": [
+                {
+                  "Id": "copper_pickaxe",
+                  "Count": 1
+                }
+              ],
+              "ProcessingTime": 86
             }
           }
         }
@@ -856,42 +901,8 @@
       "Tags": "grass",
       "Enabled": true,
       "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "fe036897-d75c-42b3-b30b-71d95b07901e",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/sbox_props/nature/tallgrass/tallgrass_b.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "29f92834-b26c-497e-bfe5-aae24959b6e7",
-          "Center": "0,0,28.4",
-          "IsTrigger": false,
-          "Scale": "23.30001,23.80003,68.09998",
-          "Static": false
-        },
-        {
-          "__type": "HealthComponent",
-          "__guid": "f212db4e-7a7d-479d-8c5e-22daaa651845",
-          "Health": 100,
-          "Lives": 1,
-          "LootItems": [
-            {
-              "Id": "grass_fiber",
-              "Count": 1
-            }
-          ],
-          "MaxHealth": 100,
-          "Regeneration": 0,
-          "RegenerationTime": 10,
-          "ToolDamageModifiers": {
-            "Knife": 1
-          }
-        }
-      ]
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
     },
     {
       "__guid": "7f4378a7-e914-4412-b889-1f939f43feda",
@@ -1050,6 +1061,44 @@
       ]
     },
     {
+      "__guid": "9514eacd-53e6-4337-b65e-4c646240c044",
+      "Flags": 0,
+      "Name": "Animal Respawner (2)",
+      "Position": "9472.811,10268.49,4.588837",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameObjectRespawner",
+          "__guid": "34e7d805-a31a-493b-a605-7c60d056d087",
+          "Prefab": {
+            "_type": "gameobject",
+            "prefab": "reindeer.prefab"
+          },
+          "RespawnTime": 10
+        }
+      ]
+    },
+    {
+      "__guid": "d2beeb5e-6829-4fb7-9272-8532c5fcc6bc",
+      "Flags": 0,
+      "Name": "Animal Respawner (1)",
+      "Position": "8170.4,9684.395,4.588837",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameObjectRespawner",
+          "__guid": "ab009ae2-57b9-4eb8-a46c-c35bd0e6dc81",
+          "Prefab": {
+            "_type": "gameobject",
+            "prefab": "reindeer.prefab"
+          },
+          "RespawnTime": 10
+        }
+      ]
+    },
+    {
       "__guid": "255f9802-2c1b-4cd1-8537-37307ee5ef7b",
       "Flags": 0,
       "Name": "copper_anvil",
@@ -1060,6 +1109,914 @@
       "NetworkOrphaned": 1,
       "OwnerTransfer": 0,
       "__Prefab": "copper_anvil.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "e625ac18-03e8-4066-ae23-8b27ef099871",
+      "Flags": 0,
+      "Name": "copper_pickaxe",
+      "Position": "236.582,338.7477,0.9999312",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "copper_pickaxe.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "fdf697a5-f986-4cb2-8bd4-a984b881516c",
+      "Flags": 0,
+      "Name": "rock",
+      "Position": "9030.822,10059.38,-0.001708984",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "ca2e9750-5292-42f1-a88f-3ac88614e945",
+      "Flags": 0,
+      "Name": "rock (1)",
+      "Position": "8921.569,9513.035,-0.001281738",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f56266c6-2f93-4917-bfea-0a62b877499b",
+      "Flags": 0,
+      "Name": "rock (2)",
+      "Position": "9656.39,9158.974,-0.001251221",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "dcac7dcb-747b-4574-a793-81ee92eb3db3",
+      "Flags": 0,
+      "Name": "rock (3)",
+      "Position": "9617.066,10369.49,-0.001434326",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "897ce27e-1f1c-4d20-aa8e-2922e0cc2e20",
+      "Flags": 0,
+      "Name": "rock (4)",
+      "Position": "10030.56,9548.92,-0.001220703",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "363ad14c-ba97-48af-ba1f-269eb7f0385e",
+      "Flags": 0,
+      "Name": "rock (5)",
+      "Position": "9289.783,10420.02,-0.001464844",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f052055d-1a7f-4a68-a30a-88d835f2f961",
+      "Flags": 0,
+      "Name": "rock (6)",
+      "Position": "10320.03,10466.51,-0.002319336",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "97c7a93f-78b8-47f3-9357-eecead6afa70",
+      "Flags": 0,
+      "Name": "rock (7)",
+      "Position": "9950.621,11242.85,-0.002563477",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "08736f8e-61a8-4d80-ac4a-d5a1ad686039",
+      "Flags": 0,
+      "Name": "rock (8)",
+      "Position": "10482.04,11144.22,-0.002441406",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "6d7b837c-6e89-4ea2-b9a3-e4de1fefbb3c",
+      "Flags": 0,
+      "Name": "rock (9)",
+      "Position": "9510.814,11273.43,-0.002563477",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d347eeef-0fec-4dff-88d2-3be21272f6a4",
+      "Flags": 0,
+      "Name": "rock (10)",
+      "Position": "8916.268,11027.66,-0.002563477",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "128b52d2-ea60-4f45-aefa-4169bb24a823",
+      "Flags": 0,
+      "Name": "rock (11)",
+      "Position": "9280.873,10880.2,-0.002441406",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "0ea4295e-7410-471d-ae80-69a64edf7314",
+      "Flags": 0,
+      "Name": "rock (12)",
+      "Position": "8637.677,10484.18,-0.002319336",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "32ddfdea-908e-48c0-a513-c74e1fd11ae9",
+      "Flags": 0,
+      "Name": "rock (13)",
+      "Position": "8407.377,9811.824,-0.002197266",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "9509e567-1421-4755-87b0-8d17206ee0ed",
+      "Flags": 0,
+      "Name": "rock (14)",
+      "Position": "8045.307,10371.62,-0.002441406",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "bd5f783b-a561-46eb-b4e9-a5191c5627bc",
+      "Flags": 0,
+      "Name": "rock (15)",
+      "Position": "8599.777,11086.87,-0.002319336",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a9d47328-ff63-4517-a428-196c9f7d9ae7",
+      "Flags": 0,
+      "Name": "rock (16)",
+      "Position": "9172.209,11757.47,-0.002685547",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "76744320-b5c9-4005-9cfc-73567fd61b44",
+      "Flags": 0,
+      "Name": "rock (17)",
+      "Position": "9765.464,11818.78,-0.002807617",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "ade2b6e1-6df3-42ff-a19f-99c02074e3c1",
+      "Flags": 0,
+      "Name": "rock (18)",
+      "Position": "10380.93,11689.94,-0.002807617",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "33907530-e533-4ba5-93ae-87874571de81",
+      "Flags": 0,
+      "Name": "stick",
+      "Position": "10084.08,11431.65,2.997314",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d41a11c9-36af-4637-a73d-5770f8d40ee8",
+      "Flags": 0,
+      "Name": "stick (2)",
+      "Position": "9593.01,11577.85,2.997436",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "be4fed30-69ea-4463-867f-642ecc205c23",
+      "Flags": 0,
+      "Name": "stick (3)",
+      "Position": "10100.73,10830.23,2.997436",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "1ffb5a88-6b32-4552-8c7d-d40c99b9c3af",
+      "Flags": 0,
+      "Name": "stick (4)",
+      "Position": "9601.415,10820.64,2.997436",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f80ee9a2-86bd-4b00-b3f4-f3ec4d70e428",
+      "Flags": 0,
+      "Name": "stick (5)",
+      "Position": "9995.116,9972.93,2.997802",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f7bee38e-a915-47be-a7ee-8f68c1445e31",
+      "Flags": 0,
+      "Name": "stick (6)",
+      "Position": "8917.101,10489.54,2.99768",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4a912383-6ba3-4c4b-aaa0-86c886f417ae",
+      "Flags": 0,
+      "Name": "stick (7)",
+      "Position": "8642.115,9882.568,2.99768",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d2956be6-f2d7-497c-9dad-a0e4dd532240",
+      "Flags": 0,
+      "Name": "stick (8)",
+      "Position": "9060.302,9462.365,2.99768",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "stick.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4137ab0a-e652-4992-9f73-e4bdcf3fe823",
+      "Flags": 0,
+      "Name": "grass (1)",
+      "Position": "8307.44,10572.3,3.997924",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "dba04d8a-645d-4aa8-9a54-62667e3a9032",
+      "Flags": 0,
+      "Name": "grass (2)",
+      "Position": "8420.137,10211.55,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "7bb84fa0-220f-42ba-a16c-653debea6fc7",
+      "Flags": 0,
+      "Name": "grass (3)",
+      "Position": "8617.938,10726.52,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "1c44e48b-b9a5-4d7c-bcbb-a94131b7710b",
+      "Flags": 0,
+      "Name": "grass (4)",
+      "Position": "9198.316,10677.24,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "930129fe-b7cc-4bde-aaca-9a002fea8224",
+      "Flags": 0,
+      "Name": "grass (5)",
+      "Position": "10052.51,10775.48,3.997924",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "02f7503d-c0f8-4178-a7c9-c4297c5ac985",
+      "Flags": 0,
+      "Name": "grass (6)",
+      "Position": "9139.558,11274.88,3.997924",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "80353ba5-65a7-49a5-8fe8-936d32408b3e",
+      "Flags": 0,
+      "Name": "grass (7)",
+      "Position": "9847.865,11443.33,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5af720a9-892b-451e-a5b8-9621633fbeed",
+      "Flags": 0,
+      "Name": "grass (8)",
+      "Position": "9415.837,10280.84,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "1a2de46b-c5a7-487c-8b2c-15d21dd377a9",
+      "Flags": 0,
+      "Name": "grass (9)",
+      "Position": "9875.196,10158.5,3.998413",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "29a3717d-1e9a-4101-ad8e-4f5a5962e376",
+      "Flags": 0,
+      "Name": "grass (10)",
+      "Position": "9603.472,9914.249,3.998413",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a2b8f400-2eaa-45e2-b643-07481447fe61",
+      "Flags": 0,
+      "Name": "grass (11)",
+      "Position": "9768.184,9378.438,3.998413",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "310f5955-f1cb-4e69-b7a4-91a274043785",
+      "Flags": 0,
+      "Name": "grass (12)",
+      "Position": "9203.227,9195.416,3.998535",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5d573eaf-6b98-4cde-80df-2abd4f48dc00",
+      "Flags": 0,
+      "Name": "grass (13)",
+      "Position": "8850.3,9110.217,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4727ac8b-9624-4f12-940f-6255f3a542b9",
+      "Flags": 0,
+      "Name": "grass (14)",
+      "Position": "8488.588,9394.631,3.998291",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5bf08633-2ea1-4f22-8c7a-8df593f57e4f",
+      "Flags": 0,
+      "Name": "grass (15)",
+      "Position": "7993.858,9895.125,3.998168",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Tags": "grass",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "grass.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "c0ebdc57-bab9-4c5c-aefb-b92634fe3a25",
+      "Flags": 0,
+      "Name": "tree (1)",
+      "Position": "8059.675,10119.19,19.99829",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "bc8f88b8-966e-46b5-8c4c-979118c97698",
+      "Flags": 0,
+      "Name": "tree (2)",
+      "Position": "8778.137,9912.394,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "da36562f-9335-4d72-bb73-6f60d1b0c0ff",
+      "Flags": 0,
+      "Name": "tree (3)",
+      "Position": "8927.619,10436.96,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "1bd8940a-f47a-441d-b385-d12cdfcb0dbb",
+      "Flags": 0,
+      "Name": "tree (4)",
+      "Position": "9669.489,10766.73,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "66ed4689-9c89-4934-956b-841366715cba",
+      "Flags": 0,
+      "Name": "tree (5)",
+      "Position": "10221.33,10057.95,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "3e7215e4-08b3-4010-8be1-6c7e128cc628",
+      "Flags": 0,
+      "Name": "tree (6)",
+      "Position": "9692.555,9695.989,19.99853",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "41761b4d-a451-4da3-9ed4-9927f37765ea",
+      "Flags": 0,
+      "Name": "tree (7)",
+      "Position": "9481.711,8965.628,19.99829",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "67561832-0d9d-4e66-8eb2-8a2518ee7a47",
+      "Flags": 0,
+      "Name": "tree (8)",
+      "Position": "10034.42,9296.065,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "c90f6c55-c2ca-4c64-9ac1-f3fd9d746af6",
+      "Flags": 0,
+      "Name": "tree (9)",
+      "Position": "10447.73,9735.583,19.99829",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "92d877be-1f71-4e03-a9c1-c5d33fa673b8",
+      "Flags": 0,
+      "Name": "tree (10)",
+      "Position": "10676.23,10263.4,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "68cd6504-e75d-470b-9254-436247b8814e",
+      "Flags": 0,
+      "Name": "tree (11)",
+      "Position": "10690.92,10751.32,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "2ea91a3c-3f29-46b3-a5cc-65e408b713d1",
+      "Flags": 0,
+      "Name": "tree (12)",
+      "Position": "10253.59,10775.93,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "289cac0e-77e8-4d58-b7f3-e0ad818d98cb",
+      "Flags": 0,
+      "Name": "tree (13)",
+      "Position": "9910.109,10453.01,19.99829",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "b7e39f1f-37bb-48fe-8d5f-0cc848764c10",
+      "Flags": 0,
+      "Name": "tree (14)",
+      "Position": "9481.183,10127.08,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "b3d04f47-eeb0-432e-ad13-3efbd0a971ac",
+      "Flags": 0,
+      "Name": "tree (15)",
+      "Position": "9091.717,9779.393,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "0fb8a85a-db59-4f18-9f2f-40a1268e8925",
+      "Flags": 0,
+      "Name": "tree (16)",
+      "Position": "9029.642,9379.998,19.99804",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a2144aaf-d4c1-4eb3-83aa-8cf1af3ef128",
+      "Flags": 0,
+      "Name": "tree (17)",
+      "Position": "9041.767,10872.16,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "c3fb9b40-c998-4a29-af8f-8bcef36cd809",
+      "Flags": 0,
+      "Name": "tree (18)",
+      "Position": "9360.685,11162.03,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5fdd0ade-efe0-4f99-bf4b-47f81fb5e6f6",
+      "Flags": 0,
+      "Name": "tree (19)",
+      "Position": "10277.77,11333.66,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4d677df2-3176-4fa4-a4d9-0ac4b4d1d2f9",
+      "Flags": 0,
+      "Name": "tree (20)",
+      "Position": "10636,11420.47,19.9978",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "9210811b-f072-4fad-972a-2f332d93b5d3",
+      "Flags": 0,
+      "Name": "tree (21)",
+      "Position": "10033.39,11759.46,19.99756",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "26c12ff1-24a0-4c1d-a199-db17dcda04a8",
+      "Flags": 0,
+      "Name": "tree (22)",
+      "Position": "9431.886,11743.68,19.99731",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "tree.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "5e014290-8038-45d2-9a73-49faf862933d",
+      "Flags": 0,
+      "Name": "rock_generator (1)",
+      "Position": "8317.268,9530.982,-0.002685547",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "e5614faa-8b6e-444b-b3df-191d0e415c3c",
+      "Flags": 0,
+      "Name": "rock_generator (2)",
+      "Position": "10707.99,9895.483,-0.002929688",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "153b069f-eaf9-41e4-b0dd-2cee258678e5",
+      "Flags": 0,
+      "Name": "rock_copper_generator (1)",
+      "Position": "10411.92,12205.96,0.9965819",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_copper_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "e0945d68-53af-4b9d-bf26-1ae738c05219",
+      "Flags": 0,
+      "Name": "rock_copper_generator (2)",
+      "Position": "10074.84,12444.2,0.9964598",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "rock_copper_generator.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "174ae27b-33e8-4039-a9a0-d6f3bc325a6f",
+      "Flags": 0,
+      "Name": "rock_copper (1)",
+      "Position": "10149.71,12196.45,-0.003051758",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "cfc49025-0707-4e28-8ea8-8bf066fb9476",
+      "Flags": 0,
+      "Name": "rock_copper (2)",
+      "Position": "10327.3,12343.87,-0.003295898",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "95629bee-7cdb-4726-85c9-e347e226d87f",
+      "Flags": 0,
+      "Name": "rock_copper",
+      "Position": "10271.32,12494.23,-0.003295898",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "518f4097-30df-4344-be4e-c5c7ef521cdf",
+      "Flags": 0,
+      "Name": "rock_copper",
+      "Position": "10093.06,12331.28,-0.003662109",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "645b4901-da69-4dda-8fd4-02a3937c03b4",
+      "Flags": 0,
+      "Name": "rock_copper",
+      "Position": "10280.7,12098.53,-0.003540039",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d8a62433-fc5b-4c1e-a224-3d63844a27b4",
+      "Flags": 0,
+      "Name": "rock_copper",
+      "Position": "10612.96,12254.25,-0.003295898",
+      "Rotation": "-0.00000002980232,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 1,
+      "OwnerTransfer": 0,
+      "__Prefab": "rock_copper.prefab",
       "__PrefabVariables": {}
     }
   ],
@@ -1087,8 +2044,6 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [
-    "facepunch.tallgrass_b"
-  ],
+  "__references": [],
   "__version": 1
 }
