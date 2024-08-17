@@ -261,6 +261,7 @@
                 "_type": "gameobject",
                 "prefab": "rock.prefab"
               },
+              "ToolType": "Shovel",
               "UseTime": 1,
               "Damage": 10
             },

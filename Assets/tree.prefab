@@ -40,7 +40,7 @@
       {
         "__type": "HealthComponent",
         "__guid": "4f1b7506-8f86-4f73-aaa5-e9fa55530087",
-        "Health": 1,
+        "Health": 250,
         "Lives": 1,
         "LootItems": [
           {
